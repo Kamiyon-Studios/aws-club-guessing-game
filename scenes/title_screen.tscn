@@ -1,0 +1,82 @@
+[gd_scene load_steps=15 format=3 uid="uid://b6wx7gw8ccwxv"]
+
+[ext_resource type="PackedScene" uid="uid://83dcr772fbpv" path="res://scenes/parallax_background.tscn" id="1_tlg85"]
+[ext_resource type="Texture2D" uid="uid://bh4hvs0ywy83j" path="res://assets/UI/buttons/kamiyon copyright.png" id="2_d3gy8"]
+[ext_resource type="Texture2D" uid="uid://mgy5yut04ics" path="res://assets/UI/buttons/btn_newgame_normal.png" id="2_eoqfr"]
+[ext_resource type="Texture2D" uid="uid://b8sbo6nharnr2" path="res://assets/UI/buttons/btn_newgame_pressed.png" id="3_n3v62"]
+[ext_resource type="Texture2D" uid="uid://c1hjcyyokas0o" path="res://assets/UI/buttons/btn_newgame_hover.png" id="4_b1iod"]
+[ext_resource type="Texture2D" uid="uid://ciwnaio4clj67" path="res://assets/UI/buttons/btn_credits_normal.png" id="5_fp3ug"]
+[ext_resource type="Texture2D" uid="uid://h7mhgnc3qrd6" path="res://assets/UI/buttons/btn_credits_pressed.png" id="6_2yis5"]
+[ext_resource type="Texture2D" uid="uid://dhmcvm6mvtgck" path="res://assets/UI/buttons/btn_credits_hover.png" id="7_7kyfj"]
+[ext_resource type="Texture2D" uid="uid://bealdj5e2nvyo" path="res://assets/UI/buttons/btn_option_normal.png" id="8_kcwun"]
+[ext_resource type="Texture2D" uid="uid://cnhue7nlwgywv" path="res://assets/UI/buttons/btn_option_pressed.png" id="9_o0ail"]
+[ext_resource type="Texture2D" uid="uid://bs1bclc25yc3" path="res://assets/UI/buttons/btn_option_hover.png" id="10_t8sph"]
+[ext_resource type="Texture2D" uid="uid://w8mvveisoakc" path="res://assets/UI/buttons/btn_exit_normal.png" id="11_2ed03"]
+[ext_resource type="Texture2D" uid="uid://b4twhsdsb8stf" path="res://assets/UI/buttons/btn_exit_pressed.png" id="12_8e1cs"]
+[ext_resource type="Texture2D" uid="uid://7srdd4qphg6n" path="res://assets/UI/buttons/btn_exit_hover.png" id="13_uiqc0"]
+
+[node name="title_screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("1_tlg85")]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0.419608)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="KamiyonCopyright" type="Sprite2D" parent="."]
+scale = Vector2(0.749946, 0.749538)
+texture = ExtResource("2_d3gy8")
+centered = false
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="title_screen_btns" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+alignment = 1
+
+[node name="btn_new_game" type="TextureButton" parent="MarginContainer/title_screen_btns"]
+layout_mode = 2
+texture_normal = ExtResource("2_eoqfr")
+texture_pressed = ExtResource("3_n3v62")
+texture_hover = ExtResource("4_b1iod")
+texture_disabled = ExtResource("3_n3v62")
+
+[node name="btn_credits" type="TextureButton" parent="MarginContainer/title_screen_btns"]
+layout_mode = 2
+texture_normal = ExtResource("5_fp3ug")
+texture_pressed = ExtResource("6_2yis5")
+texture_hover = ExtResource("7_7kyfj")
+texture_disabled = ExtResource("6_2yis5")
+
+[node name="btn_options" type="TextureButton" parent="MarginContainer/title_screen_btns"]
+layout_mode = 2
+texture_normal = ExtResource("8_kcwun")
+texture_pressed = ExtResource("9_o0ail")
+texture_hover = ExtResource("10_t8sph")
+texture_disabled = ExtResource("9_o0ail")
+
+[node name="btn_exit" type="TextureButton" parent="MarginContainer/title_screen_btns"]
+layout_mode = 2
+texture_normal = ExtResource("11_2ed03")
+texture_pressed = ExtResource("12_8e1cs")
+texture_hover = ExtResource("13_uiqc0")

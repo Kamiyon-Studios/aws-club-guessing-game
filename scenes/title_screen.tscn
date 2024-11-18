@@ -1,6 +1,6 @@
 [gd_scene load_steps=21 format=3 uid="uid://b6wx7gw8ccwxv"]
 
-[ext_resource type="Script" path="res://title_screen.gd" id="1_gffl3"]
+[ext_resource type="Script" path="res://scripts/title_screen.gd" id="1_gffl3"]
 [ext_resource type="PackedScene" uid="uid://83dcr772fbpv" path="res://scenes/parallax_background.tscn" id="1_tlg85"]
 [ext_resource type="Texture2D" uid="uid://bh4hvs0ywy83j" path="res://assets/Art/UI/buttons/kamiyon copyright.png" id="2_d3gy8"]
 [ext_resource type="Texture2D" uid="uid://mgy5yut04ics" path="res://assets/Art/UI/buttons/btn_newgame_normal.png" id="2_eoqfr"]
@@ -17,6 +17,33 @@
 [ext_resource type="Texture2D" uid="uid://7srdd4qphg6n" path="res://assets/Art/UI/buttons/btn_exit_hover.png" id="13_uiqc0"]
 [ext_resource type="AudioStream" uid="uid://bfh361x4oapm" path="res://assets/Sounds/title_screen v2.wav" id="16_0fpkg"]
 [ext_resource type="Texture2D" uid="uid://dyb47ixt6v8d7" path="res://assets/Art/UI/aws2.png" id="17_pveig"]
+
+[sub_resource type="Animation" id="Animation_e1n4b"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Aws2:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Aws2:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.356667, 0.356667)]
+}
 
 [sub_resource type="Animation" id="Animation_6863a"]
 resource_name = "aws_logo_rotation"
@@ -45,33 +72,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(2.2974, 0.378929, 2.07053, 0.707107, 1.93187, 0.517632),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(0.333333, 0.333333), Vector2(0.356667, 0.356667), Vector2(0.333333, 0.333333), Vector2(0.356667, 0.356667), Vector2(0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_e1n4b"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Aws2:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Aws2:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.356667, 0.356667)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rfo7x"]

@@ -10,7 +10,7 @@ func _ready() -> void:
 
 
 func _on_btn_new_game_pressed() -> void:
-	pass # Replace with function body.
+	get_tree().change_scene_to_file("res://scenes/quiz_ui.tscn")
 
 
 func _on_btn_credits_pressed() -> void:

@@ -12,9 +12,13 @@ signal on_quiz_finish
 @export var question_number_label: Label
 @export var score_label: Label
 
-@export_category("Buttons")
-@export var button_group: Array[Button] = []
-@export var next_question_button: Button
+@export_category("Choice Buttons")
+@export var button_group: Array[TextureButton]
+@export var button_labels: Array[Label] # Labels corresponding to each button in button_group
+
+@export_category("Next Question Button")
+@export var next_question_button: TextureButton
+@export var next_question_button_label: Label
 
 # Node references
 @onready var timer: Timer = $Timer
@@ -35,7 +39,7 @@ func _ready() -> void:
 	# Connect button press events for each answer button
 	for button in button_group:
 		button.connect("pressed", Callable(self, "_on_choice_pressed").bind(button_group.find(button)))
-	
+
 	# Connect the "Next Question" button
 	next_question_button.connect("pressed", Callable(self, "_show_next_question"))
 	next_question_button.hide()
@@ -44,9 +48,7 @@ func _ready() -> void:
 
 # Load the questions from a JSON file
 func _load_questions() -> void:
-	# Load and parse the questions from a JSON file
-	var file = FileAccess.open("res://Questions/Questions.json", FileAccess.READ)
-
+	var file = FileAccess.open("res://questions/Questions.json", FileAccess.READ)
 	if file:
 		question = JSON.parse_string(file.get_as_text())
 		file.close()
@@ -64,7 +66,7 @@ func _show_question(index: int) -> void:
 	question_number_label.text = "Question " + str(index + 1) + " / " + str(max_question)
 	_update_timer_display()
 
-	# Shuffle and assign choices to buttons
+	# Shuffle and assign choices to buttons and labels
 	var choices = question_data["choices"].duplicate()
 	var correct_answer = choices[correct_answer_index]
 	choices.shuffle()
@@ -72,9 +74,14 @@ func _show_question(index: int) -> void:
 
 	for i in range(button_group.size()):
 		var button = button_group[i]
-		button.modulate = Color(1, 1, 1) # Reset appearance
+		var label = button_labels[i]
+
+		# Reset button appearance and interactivity
+		button.modulate = Color(1, 1, 1)
 		button.mouse_filter = Control.MOUSE_FILTER_PASS
-		button.text = choices[i]
+
+		# Update label text
+		label.text = choices[i]
 
 	on_question_show.emit()
 	timer.start()
@@ -87,12 +94,12 @@ func _on_choice_pressed(choice_index: int) -> void:
 	var is_correct = (choice_index == correct_answer_index)
 	if is_correct:
 		score += 1
-	
+
 	score_label.text = "Score: " + str(score)
 	_show_feedback(is_correct, choice_index)
-	
+
 	if current_question_index == max_question - 1:
-		next_question_button.text = "Finish"
+		next_question_button_label.text = "Finish"
 
 	next_question_button.show()
 
@@ -123,12 +130,20 @@ func _on_timer_timeout() -> void:
 
 # Show feedback for the selected answer
 func _show_feedback(is_correct: bool, choice_index: int) -> void:
-	# Disable all buttons and highlight the selected answer
 	_disable_buttons()
 
-	button_group[choice_index].modulate = Color(0, 1, 0) if is_correct else Color(1, 0, 0)
-	button_group[correct_answer_index].modulate = Color(0, 1, 0) # Highlight the correct answer
+	# Update selected button's appearance and correct answer
+	var selected_button = button_group[choice_index]
+	var selected_label = button_labels[choice_index]
+	selected_button.modulate = Color(0, 1, 0) if is_correct else Color(1, 0, 0)
+	selected_label.modulate = Color(0, 1, 0) if is_correct else Color(1, 0, 0)
 
+	var correct_button = button_group[correct_answer_index]
+	var correct_label = button_labels[correct_answer_index]
+	correct_button.modulate = Color(0, 1, 0)
+	correct_label.modulate = Color(0, 1, 0)
+
+# Called when the quiz is finished
 func _on_quiz_finish() -> void:
 	hide()
 	print("Game over! Final score: ", score)

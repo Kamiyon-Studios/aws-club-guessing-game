@@ -1,0 +1,250 @@
+[gd_scene load_steps=6 format=3 uid="uid://dyjlvsfvik7vy"]
+
+[ext_resource type="Script" path="res://scripts/quiz_ui.gd" id="1_mn5nq"]
+[ext_resource type="Script" path="res://scripts/quiz_timer_bar.gd" id="2_rp7mo"]
+[ext_resource type="Script" path="res://scripts/quiz_result_ui.gd" id="3_wo70l"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5mjys"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m1juq"]
+bg_color = Color(1, 0, 0, 1)
+
+[node name="QuizUI" type="Node"]
+
+[node name="MainQuizUI" type="Control" parent="." node_paths=PackedStringArray("question_label", "timer_label", "question_number_label", "score_label", "button_group", "next_question_button")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mn5nq")
+question_label = NodePath("Panel/QuestionLabel")
+timer_label = NodePath("Panel/TimerLabel")
+question_number_label = NodePath("Panel/QuestionNumberLabel")
+score_label = NodePath("Panel/ScoreLabel")
+button_group = [NodePath("MarginContainer/HBoxContainer/VBoxContainer/Button1"), NodePath("MarginContainer/HBoxContainer/VBoxContainer/Button2"), NodePath("MarginContainer/HBoxContainer/VBoxContainer2/Button3"), NodePath("MarginContainer/HBoxContainer/VBoxContainer2/Button4")]
+next_question_button = NodePath("NextQuestionButton")
+
+[node name="Panel" type="Panel" parent="MainQuizUI"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -365.0
+offset_top = 90.0
+offset_right = 365.0
+offset_bottom = 280.0
+grow_horizontal = 2
+
+[node name="QuestionLabel" type="Label" parent="MainQuizUI/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -351.0
+offset_top = -78.0
+offset_right = 349.0
+offset_bottom = 82.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+text = "Test Label"
+
+[node name="TimerLabel" type="Label" parent="MainQuizUI/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -28.0
+offset_top = -60.0
+offset_right = 28.0
+offset_bottom = -18.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 30
+text = "00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="QuestionNumberLabel" type="Label" parent="MainQuizUI/Panel"]
+layout_mode = 1
+offset_top = -50.0
+offset_right = 100.0
+offset_bottom = -10.0
+theme_override_constants/line_spacing = 100
+theme_override_font_sizes/font_size = 24
+text = "Question 1 / 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="MainQuizUI/Panel"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -130.0
+offset_top = -50.0
+offset_right = -40.0
+offset_bottom = -16.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 24
+text = "Score: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MainQuizUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = -24.0
+offset_right = 350.0
+offset_bottom = 176.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainQuizUI/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainQuizUI/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Button1" type="Button" parent="MainQuizUI/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Button 1
+"
+
+[node name="Button2" type="Button" parent="MainQuizUI/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Button 2"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MainQuizUI/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Button3" type="Button" parent="MainQuizUI/MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Button 3"
+
+[node name="Button4" type="Button" parent="MainQuizUI/MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Button 4
+"
+
+[node name="Timer" type="Timer" parent="MainQuizUI"]
+
+[node name="TimerBar" type="ProgressBar" parent="MainQuizUI"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 20.0
+grow_horizontal = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_5mjys")
+theme_override_styles/fill = SubResource("StyleBoxFlat_m1juq")
+value = 100.0
+show_percentage = false
+script = ExtResource("2_rp7mo")
+
+[node name="NextQuestionButton" type="Button" parent="MainQuizUI"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -222.0
+offset_top = -88.0
+offset_right = -42.0
+offset_bottom = -46.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 24
+text = "Next"
+
+[node name="ResultUI" type="Control" parent="." node_paths=PackedStringArray("score_label", "retry_button", "main_menu_button")]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_wo70l")
+score_label = NodePath("Panel/ScoreLabel")
+retry_button = NodePath("MarginContainer/VBoxContainer/Button1")
+main_menu_button = NodePath("MarginContainer/VBoxContainer/Button2")
+
+[node name="Panel" type="Panel" parent="ResultUI"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -275.0
+offset_top = 80.0
+offset_right = 275.0
+offset_bottom = 320.0
+grow_horizontal = 2
+
+[node name="ScoreLabel" type="Label" parent="ResultUI/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -75.0
+offset_right = 150.0
+offset_bottom = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 26
+text = "Final Score: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="ResultUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = 56.0
+offset_right = 100.0
+offset_bottom = 148.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ResultUI/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Button1" type="Button" parent="ResultUI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Retry"
+
+[node name="Button2" type="Button" parent="ResultUI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Main Menu"
+
+[connection signal="timeout" from="MainQuizUI/Timer" to="MainQuizUI" method="_on_timer_timeout"]

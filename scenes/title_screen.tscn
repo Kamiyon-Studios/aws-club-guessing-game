@@ -138,19 +138,8 @@ texture_normal = ExtResource("11_2ed03")
 texture_pressed = ExtResource("12_8e1cs")
 texture_hover = ExtResource("13_uiqc0")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-visible = false
-modulate = Color(1, 1, 1, 0.419608)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
 [node name="music_title_screen" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("16_0fpkg")
-volume_db = -25.0
 
 [node name="Aws2" type="Sprite2D" parent="."]
 position = Vector2(712, 270)

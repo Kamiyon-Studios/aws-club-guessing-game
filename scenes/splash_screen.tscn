@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://b7wmqe5jsy1me"]
 
-[ext_resource type="Script" path="res://splash_screen.gd" id="1_6dw3p"]
+[ext_resource type="Script" path="res://scripts/splash_screen.gd" id="1_6dw3p"]
 [ext_resource type="Texture2D" uid="uid://b6acpfhq6txib" path="res://assets/Art/UI/kamiyon_logo.png" id="1_iglsy"]
 
 [sub_resource type="Animation" id="Animation_25k8m"]

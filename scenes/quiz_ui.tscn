@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dyjlvsfvik7vy"]
+[gd_scene load_steps=16 format=3 uid="uid://dyjlvsfvik7vy"]
 
 [ext_resource type="Script" path="res://scripts/quiz_ui.gd" id="1_mn5nq"]
 [ext_resource type="Script" path="res://scenes/quiz_ui_transition.gd" id="1_r5gpc"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://scripts/quiz_result_ui.gd" id="3_wo70l"]
 [ext_resource type="PackedScene" uid="uid://83dcr772fbpv" path="res://scenes/parallax_background.tscn" id="4_1c3tk"]
 [ext_resource type="FontFile" uid="uid://b23cf0m3da5mv" path="res://assets/Fonts/mini_pixel-7.ttf" id="4_qd4ub"]
+[ext_resource type="Texture2D" uid="uid://b7mjybhyppvx7" path="res://assets/Art/UI/Sprites/UI_Flat_Bar01a.png" id="5_5j3vt"]
 [ext_resource type="Texture2D" uid="uid://cm1u4l1wf8pj4" path="res://assets/Art/UI/Sprites/UI_Flat_Button01a_2.png" id="5_ypcdh"]
 [ext_resource type="Texture2D" uid="uid://0tk2nbeh1ptn" path="res://assets/Art/UI/Sprites/UI_Flat_Button01a_3.png" id="7_mvbxe"]
 [ext_resource type="PackedScene" uid="uid://c2s3p8yem5msa" path="res://scenes/scene_transition.tscn" id="9_bs26y"]
@@ -34,7 +35,7 @@ grow_vertical = 2
 script = ExtResource("1_mn5nq")
 question_label = NodePath("Panel/QuestionLabel")
 timer_label = NodePath("Panel/TimerLabel")
-question_number_label = NodePath("Panel/QuestionNumberLabel")
+question_number_label = NodePath("Panel/QuestionNumber/QuestionNumberLabel")
 score_label = NodePath("Panel/ScoreLabel")
 button_group = [NodePath("ChoicesButton/GridContainer/TextureButton1"), NodePath("ChoicesButton/GridContainer/TextureButton2"), NodePath("ChoicesButton/GridContainer/TextureButton3"), NodePath("ChoicesButton/GridContainer/TextureButton4")]
 button_labels = [NodePath("ChoicesButton/GridContainer/TextureButton1/ChoiceLabel1"), NodePath("ChoicesButton/GridContainer/TextureButton2/ChoiceLabel2"), NodePath("ChoicesButton/GridContainer/TextureButton3/ChoiceLabel3"), NodePath("ChoicesButton/GridContainer/TextureButton4/ChoiceLabel4")]
@@ -93,11 +94,20 @@ text = "00"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="QuestionNumberLabel" type="Label" parent="MainQuizUI/Panel"]
+[node name="QuestionNumber" type="TextureRect" parent="MainQuizUI/Panel"]
+z_index = -1
 layout_mode = 1
-offset_top = -35.0
-offset_right = 161.0
-offset_bottom = -1.0
+offset_top = -42.0
+offset_right = 180.0
+offset_bottom = -2.0
+texture = ExtResource("5_5j3vt")
+
+[node name="QuestionNumberLabel" type="Label" parent="MainQuizUI/Panel/QuestionNumber"]
+layout_mode = 1
+offset_top = -3.0
+offset_right = 180.0
+offset_bottom = 37.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_constants/line_spacing = 100
 theme_override_font_sizes/font_size = 24
 text = "Question 1 / 1"
@@ -292,7 +302,7 @@ vertical_alignment = 1
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 15.0
+offset_bottom = 14.0
 grow_horizontal = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_5mjys")
 theme_override_styles/fill = SubResource("StyleBoxFlat_m1juq")

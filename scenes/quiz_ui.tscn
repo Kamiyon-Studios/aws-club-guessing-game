@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://dyjlvsfvik7vy"]
+[gd_scene load_steps=15 format=3 uid="uid://dyjlvsfvik7vy"]
 
 [ext_resource type="Script" path="res://scripts/quiz_ui.gd" id="1_mn5nq"]
+[ext_resource type="Script" path="res://scenes/quiz_ui_transition.gd" id="1_r5gpc"]
 [ext_resource type="Texture2D" uid="uid://cvhglivqbi4js" path="res://assets/Art/UI/Sprites/UI_Flat_InputField01a.png" id="2_lryss"]
 [ext_resource type="Script" path="res://scripts/quiz_timer_bar.gd" id="2_rp7mo"]
 [ext_resource type="Texture2D" uid="uid://bvuau8swtj3mr" path="res://assets/Art/UI/Sprites/UI_Flat_Button01a_1.png" id="3_tsnbl"]
@@ -8,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://83dcr772fbpv" path="res://scenes/parallax_background.tscn" id="4_1c3tk"]
 [ext_resource type="FontFile" uid="uid://b23cf0m3da5mv" path="res://assets/Fonts/mini_pixel-7.ttf" id="4_qd4ub"]
 [ext_resource type="Texture2D" uid="uid://cm1u4l1wf8pj4" path="res://assets/Art/UI/Sprites/UI_Flat_Button01a_2.png" id="5_ypcdh"]
+[ext_resource type="Texture2D" uid="uid://0tk2nbeh1ptn" path="res://assets/Art/UI/Sprites/UI_Flat_Button01a_3.png" id="7_mvbxe"]
+[ext_resource type="PackedScene" uid="uid://c2s3p8yem5msa" path="res://scenes/scene_transition.tscn" id="9_bs26y"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ucxv"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -17,7 +20,9 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m1juq"]
 bg_color = Color(1, 0, 0, 1)
 
-[node name="QuizUI" type="Node"]
+[node name="QuizUI" type="Node" node_paths=PackedStringArray("scene_transiton_manager")]
+script = ExtResource("1_r5gpc")
+scene_transiton_manager = NodePath("Scene_Transition")
 
 [node name="MainQuizUI" type="Control" parent="." node_paths=PackedStringArray("question_label", "timer_label", "question_number_label", "score_label", "button_group", "button_labels", "next_question_button", "next_question_button_label")]
 layout_mode = 3
@@ -41,10 +46,10 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -400.0
+offset_left = -425.0
 offset_top = 60.0
-offset_right = 400.0
-offset_bottom = 200.0
+offset_right = 425.0
+offset_bottom = 210.0
 grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_3ucxv")
 
@@ -59,15 +64,13 @@ texture = ExtResource("2_lryss")
 
 [node name="QuestionLabel" type="Label" parent="MainQuizUI/Panel"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -375.0
-offset_top = -60.0
-offset_right = 375.0
-offset_bottom = 60.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 10.0
+offset_right = -30.0
+offset_bottom = -20.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -117,11 +120,18 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="NextQuestionButton2" type="TextureButton" parent="MainQuizUI/Panel"]
-layout_mode = 0
-offset_left = 600.0
-offset_top = 80.0
-offset_right = 780.0
-offset_bottom = 120.0
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -190.0
+offset_top = -20.0
+offset_right = -10.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 0
 texture_normal = ExtResource("3_tsnbl")
 stretch_mode = 0
 
@@ -144,10 +154,10 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 80.0
-offset_top = -282.0
-offset_right = 580.0
-offset_bottom = -82.0
+offset_left = 50.0
+offset_top = -300.0
+offset_right = 600.0
+offset_bottom = -70.0
 grow_vertical = 0
 
 [node name="GridContainer" type="GridContainer" parent="MainQuizUI/ChoicesButton"]
@@ -166,6 +176,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 texture_normal = ExtResource("5_ypcdh")
 texture_pressed = ExtResource("3_tsnbl")
+texture_hover = ExtResource("7_mvbxe")
 stretch_mode = 0
 
 [node name="ChoiceLabel1" type="Label" parent="MainQuizUI/ChoicesButton/GridContainer/TextureButton1"]
@@ -183,7 +194,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_qd4ub")
-theme_override_font_sizes/font_size = 38
+theme_override_font_sizes/font_size = 34
 text = "Button 1"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -194,6 +205,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 texture_normal = ExtResource("5_ypcdh")
 texture_pressed = ExtResource("3_tsnbl")
+texture_hover = ExtResource("7_mvbxe")
 stretch_mode = 0
 
 [node name="ChoiceLabel2" type="Label" parent="MainQuizUI/ChoicesButton/GridContainer/TextureButton2"]
@@ -211,7 +223,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_qd4ub")
-theme_override_font_sizes/font_size = 38
+theme_override_font_sizes/font_size = 34
 text = "Button 2"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -222,6 +234,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 texture_normal = ExtResource("5_ypcdh")
 texture_pressed = ExtResource("3_tsnbl")
+texture_hover = ExtResource("7_mvbxe")
 stretch_mode = 0
 
 [node name="ChoiceLabel3" type="Label" parent="MainQuizUI/ChoicesButton/GridContainer/TextureButton3"]
@@ -239,7 +252,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_qd4ub")
-theme_override_font_sizes/font_size = 38
+theme_override_font_sizes/font_size = 34
 text = "Button 3"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -250,6 +263,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 texture_normal = ExtResource("5_ypcdh")
 texture_pressed = ExtResource("3_tsnbl")
+texture_hover = ExtResource("7_mvbxe")
 stretch_mode = 0
 
 [node name="ChoiceLabel4" type="Label" parent="MainQuizUI/ChoicesButton/GridContainer/TextureButton4"]
@@ -267,7 +281,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_qd4ub")
-theme_override_font_sizes/font_size = 38
+theme_override_font_sizes/font_size = 34
 text = "Button 4"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -357,5 +371,9 @@ theme_override_font_sizes/font_size = 20
 text = "Main Menu"
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("4_1c3tk")]
+
+[node name="Scene_Transition" parent="." instance=ExtResource("9_bs26y")]
+offset_left = 1242.0
+offset_right = 1242.0
 
 [connection signal="timeout" from="MainQuizUI/Timer" to="MainQuizUI" method="_on_timer_timeout"]

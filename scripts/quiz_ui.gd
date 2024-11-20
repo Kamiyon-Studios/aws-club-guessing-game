@@ -34,7 +34,7 @@ var score: int = 0
 # Called when the scene is ready
 func _ready() -> void:
 	_load_questions()
-	_show_question(current_question_index)
+	#_show_question(current_question_index)
 
 	# Connect button press events for each answer button
 	for button in button_group:

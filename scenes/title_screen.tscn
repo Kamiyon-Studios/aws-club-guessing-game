@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://d3t0hwjvm6cug"]
+[gd_scene load_steps=22 format=3 uid="uid://d3t0hwjvm6cug"]
 
 [ext_resource type="Script" path="res://scripts/title_screen.gd" id="1_gffl3"]
 [ext_resource type="PackedScene" uid="uid://83dcr772fbpv" path="res://scenes/parallax_background.tscn" id="1_tlg85"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://7srdd4qphg6n" path="res://assets/Art/UI/buttons/btn_exit_hover.png" id="13_uiqc0"]
 [ext_resource type="AudioStream" uid="uid://bfh361x4oapm" path="res://assets/Sounds/title_screen v2.wav" id="16_0fpkg"]
 [ext_resource type="Texture2D" uid="uid://dyb47ixt6v8d7" path="res://assets/Art/UI/aws2.png" id="17_pveig"]
+[ext_resource type="PackedScene" uid="uid://c2s3p8yem5msa" path="res://scenes/scene_transition.tscn" id="18_3o5sx"]
 
 [sub_resource type="Animation" id="Animation_e1n4b"]
 length = 0.001
@@ -80,7 +81,7 @@ _data = {
 "aws_logo_rotation": SubResource("Animation_6863a")
 }
 
-[node name="title_screen" type="Control"]
+[node name="title_screen" type="Control" node_paths=PackedStringArray("scene_transiton_manager")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -88,6 +89,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_gffl3")
+scene_transiton_manager = NodePath("Scene_Transition")
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("1_tlg85")]
 
@@ -155,6 +157,11 @@ libraries = {
 "": SubResource("AnimationLibrary_rfo7x")
 }
 autoplay = "aws_logo_rotation"
+
+[node name="Scene_Transition" parent="." instance=ExtResource("18_3o5sx")]
+layout_mode = 1
+offset_left = 1272.0
+offset_right = 1272.0
 
 [connection signal="pressed" from="MarginContainer/title_screen_btns/btn_new_game" to="." method="_on_btn_new_game_pressed"]
 [connection signal="pressed" from="MarginContainer/title_screen_btns/btn_credits" to="." method="_on_btn_credits_pressed"]

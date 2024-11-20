@@ -1,10 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://c2s3p8yem5msa"]
+[gd_scene load_steps=9 format=3 uid="uid://c8d227aqdys4c"]
 
 [ext_resource type="Texture2D" uid="uid://dyb47ixt6v8d7" path="res://assets/Art/UI/aws2.png" id="1_cuq6g"]
 [ext_resource type="Script" path="res://scripts/scene_transition.gd" id="1_wopcd"]
 
-[sub_resource type="Animation" id="Animation_ni47e"]
-resource_name = "Scene_Transition_Default"
+[sub_resource type="Animation" id="Animation_0y6g1"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -31,7 +30,8 @@ tracks/1/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_0y6g1"]
+[sub_resource type="Animation" id="Animation_ni47e"]
+resource_name = "Scene_Transition_Default"
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false

@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://b7mjybhyppvx7" path="res://assets/Art/UI/Sprites/UI_Flat_Bar01a.png" id="5_5j3vt"]
 [ext_resource type="Texture2D" uid="uid://cm1u4l1wf8pj4" path="res://assets/Art/UI/Sprites/UI_Flat_Button01a_2.png" id="5_ypcdh"]
 [ext_resource type="Texture2D" uid="uid://0tk2nbeh1ptn" path="res://assets/Art/UI/Sprites/UI_Flat_Button01a_3.png" id="7_mvbxe"]
-[ext_resource type="PackedScene" uid="uid://c2s3p8yem5msa" path="res://scenes/scene_transition.tscn" id="9_bs26y"]
+[ext_resource type="PackedScene" path="res://scenes/scene_transition.tscn" id="9_bs26y"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ucxv"]
 bg_color = Color(0.6, 0.6, 0.6, 0)

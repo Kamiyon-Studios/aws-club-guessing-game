@@ -20,6 +20,9 @@ signal on_quiz_finish
 @export var next_question_button: TextureButton
 @export var next_question_button_label: Label
 
+@export_category("Animations")
+@export var scene_transiton_manager: Node
+
 # Node references
 @onready var timer: Timer = $Timer
 
@@ -33,8 +36,8 @@ var score: int = 0
 
 # Called when the scene is ready
 func _ready() -> void:
+	hide()
 	_load_questions()
-	#_show_question(current_question_index)
 
 	# Connect button press events for each answer button
 	for button in button_group:
@@ -45,6 +48,8 @@ func _ready() -> void:
 	next_question_button.hide()
 
 	connect("on_quiz_finish", Callable(self, "_on_quiz_finish"))
+
+	scene_transiton_manager.connect("exit_animation_finished", Callable(self, "_on_scene_exit_animation_finished"))
 
 # Load the questions from a JSON file
 func _load_questions() -> void:
@@ -147,6 +152,9 @@ func _show_feedback(is_correct: bool, choice_index: int) -> void:
 func _on_quiz_finish() -> void:
 	hide()
 	print("Game over! Final score: ", score)
+
+func _on_scene_exit_animation_finished() -> void:
+	show()
 
 # Disable all answer buttons
 func _disable_buttons() -> void:

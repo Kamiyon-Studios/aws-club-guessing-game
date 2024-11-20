@@ -10,8 +10,6 @@ signal exit_animation_finished
 signal onscreen_animation_finished
 
 func _ready() -> void:
-    # Hide the node initially
-    hide()
     # Connect the animation_finished signal to the custom handler
     animation_player.animation_finished.connect(Callable(self, "_on_animation_finished"))
 

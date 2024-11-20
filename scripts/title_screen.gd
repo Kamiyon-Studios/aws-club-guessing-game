@@ -5,6 +5,8 @@ extends Control
 @onready var music_title_screen: AudioStreamPlayer = $music_title_screen
 @onready var anim_aws_logo: AnimationPlayer = $anim_aws_logo
 
+@onready var quiz_scene: PackedScene = preload("res://scenes/quiz_ui.tscn")
+
 func _ready() -> void:
 	music_title_screen.play()
 	anim_aws_logo.play()
@@ -25,4 +27,4 @@ func _on_btn_exit_pressed() -> void:
 	get_tree().quit()
 
 func _on_animation_finished() -> void:
-	get_tree().change_scene_to_file("res://scenes/quiz_ui.tscn")
+	get_tree().change_scene_to_packed(quiz_scene)

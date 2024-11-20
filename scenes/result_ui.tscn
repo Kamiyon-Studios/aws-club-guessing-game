@@ -1,0 +1,147 @@
+[gd_scene load_steps=9 format=3 uid="uid://d0dotrw1v6k13"]
+
+[ext_resource type="Script" path="res://scripts/quiz_result_ui.gd" id="1_oecsc"]
+[ext_resource type="Texture2D" uid="uid://cn5v7o1klbnbr" path="res://assets/Art/UI/Sprites/UI_Flat_InputField02a.png" id="2_qpv54"]
+[ext_resource type="Texture2D" uid="uid://br25g65hby2xh" path="res://assets/Art/aws mascot.png" id="2_xc4ed"]
+[ext_resource type="Texture2D" uid="uid://cg4u1nlc816mn" path="res://assets/Art/mascot_shocked.png" id="3_fx1tj"]
+[ext_resource type="FontFile" uid="uid://b23cf0m3da5mv" path="res://assets/Fonts/mini_pixel-7.ttf" id="3_qfylj"]
+[ext_resource type="Texture2D" uid="uid://cm1u4l1wf8pj4" path="res://assets/Art/UI/Sprites/UI_Flat_Button01a_2.png" id="4_lc4uu"]
+[ext_resource type="Texture2D" uid="uid://bvuau8swtj3mr" path="res://assets/Art/UI/Sprites/UI_Flat_Button01a_1.png" id="5_gitik"]
+[ext_resource type="Texture2D" uid="uid://0tk2nbeh1ptn" path="res://assets/Art/UI/Sprites/UI_Flat_Button01a_3.png" id="6_2vap4"]
+
+[node name="ResultUI" type="Control" node_paths=PackedStringArray("score_label", "retry_button", "main_menu_button")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_oecsc")
+score_label = NodePath("Panel/ScoreLabel")
+retry_button = NodePath("Panel/HBoxContainer/RetryButton")
+main_menu_button = NodePath("Panel/HBoxContainer/MainMenuButton")
+
+[node name="AwsMascot" type="Sprite2D" parent="."]
+position = Vector2(834.25, 422.306)
+scale = Vector2(0.375, 0.375)
+texture = ExtResource("2_xc4ed")
+
+[node name="MascotShocked" type="Sprite2D" parent="."]
+position = Vector2(152, 138)
+rotation = -1.0472
+scale = Vector2(0.295148, 0.295148)
+texture = ExtResource("3_fx1tj")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -275.0
+offset_top = 80.0
+offset_right = 275.0
+offset_bottom = 320.0
+grow_horizontal = 2
+
+[node name="TextureRect" type="TextureRect" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_qpv54")
+
+[node name="Title" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 60.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 10
+theme_override_fonts/font = ExtResource("3_qfylj")
+theme_override_font_sizes/font_size = 58
+text = "Quiz Finish"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="ScoreLabel" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = -195.0
+offset_right = 150.0
+offset_bottom = -95.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_qfylj")
+theme_override_font_sizes/font_size = 50
+text = "Final Score: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -250.0
+offset_top = 10.0
+offset_right = 250.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 40
+
+[node name="RetryButton" type="TextureButton" parent="Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("4_lc4uu")
+texture_pressed = ExtResource("5_gitik")
+texture_hover = ExtResource("6_2vap4")
+stretch_mode = 0
+
+[node name="RetryButtonLabel" type="Label" parent="Panel/HBoxContainer/RetryButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_qfylj")
+theme_override_font_sizes/font_size = 32
+text = "Retry"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MainMenuButton" type="TextureButton" parent="Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("4_lc4uu")
+texture_pressed = ExtResource("5_gitik")
+texture_hover = ExtResource("6_2vap4")
+stretch_mode = 0
+
+[node name="MainMenuButtonLabel" type="Label" parent="Panel/HBoxContainer/MainMenuButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_qfylj")
+theme_override_font_sizes/font_size = 32
+text = "Main Menu"
+horizontal_alignment = 1
+vertical_alignment = 1

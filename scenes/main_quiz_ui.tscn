@@ -1,0 +1,342 @@
+[gd_scene load_steps=14 format=3 uid="uid://dx31idrldi5f1"]
+
+[ext_resource type="Script" path="res://scripts/quiz_ui.gd" id="1_0pgoq"]
+[ext_resource type="Texture2D" uid="uid://cvhglivqbi4js" path="res://assets/Art/UI/Sprites/UI_Flat_InputField01a.png" id="2_vu1cf"]
+[ext_resource type="FontFile" uid="uid://b23cf0m3da5mv" path="res://assets/Fonts/mini_pixel-7.ttf" id="3_ikbne"]
+[ext_resource type="Texture2D" uid="uid://b7mjybhyppvx7" path="res://assets/Art/UI/Sprites/UI_Flat_Bar01a.png" id="4_7u4mo"]
+[ext_resource type="Texture2D" uid="uid://cm1u4l1wf8pj4" path="res://assets/Art/UI/Sprites/UI_Flat_Button01a_2.png" id="5_0e54d"]
+[ext_resource type="Texture2D" uid="uid://bvuau8swtj3mr" path="res://assets/Art/UI/Sprites/UI_Flat_Button01a_1.png" id="6_h2bjb"]
+[ext_resource type="Texture2D" uid="uid://0tk2nbeh1ptn" path="res://assets/Art/UI/Sprites/UI_Flat_Button01a_3.png" id="7_u25o8"]
+[ext_resource type="Script" path="res://scripts/quiz_timer_bar.gd" id="8_ojf2s"]
+[ext_resource type="Texture2D" uid="uid://b3w1ehwtxdaeq" path="res://assets/Art/rectangle.png" id="9_g2j3w"]
+[ext_resource type="Texture2D" uid="uid://br25g65hby2xh" path="res://assets/Art/aws mascot.png" id="10_imi1f"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ucxv"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5mjys"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m1juq"]
+bg_color = Color(1, 0, 0, 1)
+
+[node name="MainQuizUI" type="Control" node_paths=PackedStringArray("question_label", "timer_label", "question_number_label", "score_label", "button_group", "button_labels", "next_question_button", "next_question_button_label")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0pgoq")
+question_label = NodePath("Panel/QuestionLabel")
+timer_label = NodePath("Panel/TimerRect/TimerLabel")
+question_number_label = NodePath("Panel/QuestionNumber/QuestionNumberLabel")
+score_label = NodePath("Panel/ScoreRect/ScoreLabel")
+button_group = [NodePath("ChoicesButton/GridContainer/TextureButton1"), NodePath("ChoicesButton/GridContainer/TextureButton2"), NodePath("ChoicesButton/GridContainer/TextureButton3"), NodePath("ChoicesButton/GridContainer/TextureButton4")]
+button_labels = [NodePath("ChoicesButton/GridContainer/TextureButton1/ChoiceLabel1"), NodePath("ChoicesButton/GridContainer/TextureButton2/ChoiceLabel2"), NodePath("ChoicesButton/GridContainer/TextureButton3/ChoiceLabel3"), NodePath("ChoicesButton/GridContainer/TextureButton4/ChoiceLabel4")]
+next_question_button = NodePath("Panel/NextQuestionButton2")
+next_question_button_label = NodePath("Panel/NextQuestionButton2/NextQuestionButtonLabel")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -425.0
+offset_top = 80.0
+offset_right = 425.0
+offset_bottom = 230.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_3ucxv")
+
+[node name="TextureRect" type="TextureRect" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_vu1cf")
+
+[node name="QuestionLabel" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 10.0
+offset_right = -30.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_ikbne")
+theme_override_font_sizes/font_size = 38
+text = "Test Label"
+
+[node name="TimerRect" type="TextureRect" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -45.0
+offset_top = -60.0
+offset_right = 45.0
+offset_bottom = -5.0
+grow_horizontal = 2
+texture = ExtResource("4_7u4mo")
+
+[node name="TimerLabel" type="Label" parent="Panel/TimerRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -8.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_ikbne")
+theme_override_font_sizes/font_size = 56
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="QuestionNumber" type="TextureRect" parent="Panel"]
+z_index = -1
+layout_mode = 1
+offset_top = -42.0
+offset_right = 180.0
+offset_bottom = -2.0
+texture = ExtResource("4_7u4mo")
+
+[node name="QuestionNumberLabel" type="Label" parent="Panel/QuestionNumber"]
+layout_mode = 1
+offset_top = -3.0
+offset_right = 180.0
+offset_bottom = 37.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 100
+theme_override_fonts/font = ExtResource("3_ikbne")
+theme_override_font_sizes/font_size = 32
+text = "Question 1 / 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreRect" type="TextureRect" parent="Panel"]
+layout_mode = 0
+offset_left = 720.0
+offset_top = -42.0
+offset_right = 840.0
+offset_bottom = -2.0
+texture = ExtResource("4_7u4mo")
+
+[node name="ScoreLabel" type="Label" parent="Panel/ScoreRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -3.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_ikbne")
+theme_override_font_sizes/font_size = 32
+text = "Score: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NextQuestionButton2" type="TextureButton" parent="Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -90.0
+offset_top = -10.0
+offset_right = 90.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("5_0e54d")
+texture_pressed = ExtResource("6_h2bjb")
+texture_hover = ExtResource("7_u25o8")
+stretch_mode = 0
+
+[node name="NextQuestionButtonLabel" type="Label" parent="Panel/NextQuestionButton2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_ikbne")
+theme_override_font_sizes/font_size = 36
+text = "Next"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ChoicesButton" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = -260.0
+offset_right = 590.0
+offset_bottom = -30.0
+grow_vertical = 0
+
+[node name="GridContainer" type="GridContainer" parent="ChoicesButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 10
+columns = 2
+
+[node name="TextureButton1" type="TextureButton" parent="ChoicesButton/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("5_0e54d")
+texture_pressed = ExtResource("6_h2bjb")
+texture_hover = ExtResource("7_u25o8")
+stretch_mode = 0
+
+[node name="ChoiceLabel1" type="Label" parent="ChoicesButton/GridContainer/TextureButton1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -0.5
+offset_top = -11.5
+offset_right = 0.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_ikbne")
+theme_override_font_sizes/font_size = 34
+text = "Button 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureButton2" type="TextureButton" parent="ChoicesButton/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("5_0e54d")
+texture_pressed = ExtResource("6_h2bjb")
+texture_hover = ExtResource("7_u25o8")
+stretch_mode = 0
+
+[node name="ChoiceLabel2" type="Label" parent="ChoicesButton/GridContainer/TextureButton2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_ikbne")
+theme_override_font_sizes/font_size = 34
+text = "Button 2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureButton3" type="TextureButton" parent="ChoicesButton/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("5_0e54d")
+texture_pressed = ExtResource("6_h2bjb")
+texture_hover = ExtResource("7_u25o8")
+stretch_mode = 0
+
+[node name="ChoiceLabel3" type="Label" parent="ChoicesButton/GridContainer/TextureButton3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_ikbne")
+theme_override_font_sizes/font_size = 34
+text = "Button 3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureButton4" type="TextureButton" parent="ChoicesButton/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("5_0e54d")
+texture_pressed = ExtResource("6_h2bjb")
+texture_hover = ExtResource("7_u25o8")
+stretch_mode = 0
+
+[node name="ChoiceLabel4" type="Label" parent="ChoicesButton/GridContainer/TextureButton4"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_ikbne")
+theme_override_font_sizes/font_size = 34
+text = "Button 4"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="TimerBar" type="ProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 14.0
+grow_horizontal = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_5mjys")
+theme_override_styles/fill = SubResource("StyleBoxFlat_m1juq")
+value = 100.0
+show_percentage = false
+script = ExtResource("8_ojf2s")
+
+[node name="Rectangle" type="Sprite2D" parent="."]
+position = Vector2(782, 386)
+scale = Vector2(0.424108, 0.42301)
+texture = ExtResource("9_g2j3w")
+
+[node name="AwsMascot" type="Sprite2D" parent="Rectangle"]
+position = Vector2(13.442, -67.2094)
+scale = Vector2(1.06001, 1.06001)
+texture = ExtResource("10_imi1f")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

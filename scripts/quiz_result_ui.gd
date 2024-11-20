@@ -4,8 +4,8 @@ extends Control
 @export var score_label: Label
 
 @export_category("Buttons")
-@export var retry_button: Button
-@export var main_menu_button: Button
+@export var retry_button: TextureButton
+@export var main_menu_button: TextureButton
 
 var quiz_ui_script
 

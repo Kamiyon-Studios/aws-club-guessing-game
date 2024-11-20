@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dx31idrldi5f1"]
+[gd_scene load_steps=15 format=3 uid="uid://dx31idrldi5f1"]
 
 [ext_resource type="Script" path="res://scripts/quiz_ui.gd" id="1_0pgoq"]
 [ext_resource type="Texture2D" uid="uid://cvhglivqbi4js" path="res://assets/Art/UI/Sprites/UI_Flat_InputField01a.png" id="2_vu1cf"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://scripts/quiz_timer_bar.gd" id="8_ojf2s"]
 [ext_resource type="Texture2D" uid="uid://b3w1ehwtxdaeq" path="res://assets/Art/rectangle.png" id="9_g2j3w"]
 [ext_resource type="Texture2D" uid="uid://br25g65hby2xh" path="res://assets/Art/aws mascot.png" id="10_imi1f"]
+[ext_resource type="PackedScene" uid="uid://bbii34ludbsfp" path="res://scenes/feed_back_animations.tscn" id="11_riv4w"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ucxv"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -71,7 +72,8 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_ikbne")
 theme_override_font_sizes/font_size = 38
-text = "Test Label"
+text = "Text Label"
+autowrap_mode = 3
 
 [node name="TimerRect" type="TextureRect" parent="Panel"]
 layout_mode = 1
@@ -339,5 +341,10 @@ texture = ExtResource("9_g2j3w")
 position = Vector2(13.442, -67.2094)
 scale = Vector2(1.06001, 1.06001)
 texture = ExtResource("10_imi1f")
+
+[node name="FeedBackAnimations" parent="." node_paths=PackedStringArray("quiz_ui_script") instance=ExtResource("11_riv4w")]
+visible = false
+layout_mode = 1
+quiz_ui_script = NodePath("..")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

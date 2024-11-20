@@ -5,6 +5,10 @@ signal on_question_show
 signal on_answer_action
 signal on_quiz_finish
 
+signal on_correct_answer
+signal on_incorrect_answer
+signal on_timeout
+
 # Export variables
 @export_category("Labels")
 @export var question_label: Label
@@ -98,7 +102,10 @@ func _on_choice_pressed(choice_index: int) -> void:
 
 	var is_correct = (choice_index == correct_answer_index)
 	if is_correct:
+		on_correct_answer.emit()
 		score += 1
+	else:
+		on_incorrect_answer.emit()
 
 	score_label.text = "Score: " + str(score)
 	_show_feedback(is_correct, choice_index)
@@ -129,6 +136,7 @@ func _on_timer_timeout() -> void:
 	if timer_value <= 0:
 		timer.stop()
 		print("Time's up!")
+		on_timeout.emit()
 		_disable_buttons()
 		_show_feedback(false, correct_answer_index)
 		next_question_button.show()

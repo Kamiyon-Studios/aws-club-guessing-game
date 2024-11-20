@@ -12,6 +12,9 @@ extends Control
 
 var quiz_ui_script
 
+var main_menu: bool = false
+var retry: bool = false
+
 func _ready() -> void:
 	quiz_ui_script = get_node("../MainQuizUI")
 	quiz_ui_script.connect("on_quiz_finish", Callable(self, "_on_quiz_finish"))
@@ -23,14 +26,20 @@ func _ready() -> void:
 	hide()
 
 func _on_retry_button_pressed() -> void:
+	retry = true
 	scene_transiton_manager.play_transition_enter()
 
 func _on_main_menu_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/title_screen.tscn")
+	main_menu = true
+	scene_transiton_manager.play_transition_enter()
+	
 
 func _on_quiz_finish() -> void:
 	score_label.text = "Score: " + str(quiz_ui_script.score)
 	show()
 
 func _on_scene_enter_animation_finished() -> void:
-	get_tree().reload_current_scene()
+	if main_menu:
+		get_tree().change_scene_to_file("res://scenes/title_screen.tscn")
+	if retry:
+		get_tree().reload_current_scene()

@@ -347,4 +347,6 @@ visible = false
 layout_mode = 1
 quiz_ui_script = NodePath("..")
 
+[node name="MascotAnimationPlayer" type="AnimationPlayer" parent="."]
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

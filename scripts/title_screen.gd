@@ -7,7 +7,10 @@ extends Control
 
 @onready var quiz_scene: PackedScene = preload("res://scenes/quiz_ui.tscn")
 
+var is_new_scene: bool = false
+
 func _ready() -> void:
+	is_new_scene = true
 	music_title_screen.play()
 	anim_aws_logo.play()
 
@@ -27,4 +30,7 @@ func _on_btn_exit_pressed() -> void:
 	get_tree().quit()
 
 func _on_animation_finished() -> void:
-	get_tree().change_scene_to_packed(quiz_scene)
+	if is_new_scene:
+		is_new_scene = false
+		print("why is this not working?")
+		get_tree().change_scene_to_packed(quiz_scene)

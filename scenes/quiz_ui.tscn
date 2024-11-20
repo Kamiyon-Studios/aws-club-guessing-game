@@ -1,15 +1,18 @@
-[gd_scene load_steps=7 format=3 uid="uid://dyjlvsfvik7vy"]
+[gd_scene load_steps=8 format=3 uid="uid://dyjlvsfvik7vy"]
 
 [ext_resource type="Script" path="res://scripts/quiz_ui_transition.gd" id="1_r5gpc"]
 [ext_resource type="PackedScene" uid="uid://cld7snv3yofb5" path="res://scenes/mechanics_u.tscn" id="2_xx5wg"]
 [ext_resource type="PackedScene" uid="uid://dx31idrldi5f1" path="res://scenes/main_quiz_ui.tscn" id="3_gtuyt"]
 [ext_resource type="PackedScene" uid="uid://83dcr772fbpv" path="res://scenes/parallax_background.tscn" id="4_1c3tk"]
 [ext_resource type="PackedScene" uid="uid://d0dotrw1v6k13" path="res://scenes/result_ui.tscn" id="4_xp3a5"]
+[ext_resource type="AudioStream" uid="uid://beastgq61v3sp" path="res://assets/Sounds/music_main_game.mp3" id="7_hh3is"]
 [ext_resource type="PackedScene" uid="uid://c8d227aqdys4c" path="res://scenes/scene_transition.tscn" id="9_bs26y"]
 
 [node name="QuizUI" type="Node" node_paths=PackedStringArray("scene_transiton_manager")]
 script = ExtResource("1_r5gpc")
 scene_transiton_manager = NodePath("Scene_Transition")
+
+[node name="Scene_Transition" parent="." instance=ExtResource("9_bs26y")]
 
 [node name="MechanicsU" parent="." instance=ExtResource("2_xx5wg")]
 visible = false
@@ -22,6 +25,9 @@ scene_transiton_manager = NodePath("../Scene_Transition")
 visible = false
 scene_transiton_manager = NodePath("../Scene_Transition")
 
-[node name="Scene_Transition" parent="." instance=ExtResource("9_bs26y")]
-
 [node name="ParallaxBackground" parent="." instance=ExtResource("4_1c3tk")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_hh3is")
+autoplay = true
+bus = &"BG Music"

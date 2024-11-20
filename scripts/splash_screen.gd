@@ -1,6 +1,6 @@
 extends Control
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-var Main = preload("res://scenes/object scenes/title_screen.tscn")
+var Main = preload("res://scenes/title_screen.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

@@ -15,7 +15,6 @@ scene_transiton_manager = NodePath("Scene_Transition")
 visible = false
 
 [node name="MainQuizUI" parent="." node_paths=PackedStringArray("scene_transiton_manager") instance=ExtResource("3_gtuyt")]
-visible = false
 scene_transiton_manager = NodePath("../Scene_Transition")
 
 [node name="ResultUI" parent="." node_paths=PackedStringArray("scene_transiton_manager") instance=ExtResource("4_xp3a5")]
@@ -23,5 +22,7 @@ visible = false
 scene_transiton_manager = NodePath("../Scene_Transition")
 
 [node name="Scene_Transition" parent="." instance=ExtResource("9_bs26y")]
+offset_left = 1270.0
+offset_right = 1270.0
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("4_1c3tk")]

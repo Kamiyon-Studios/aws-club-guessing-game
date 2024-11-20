@@ -22,7 +22,5 @@ visible = false
 scene_transiton_manager = NodePath("../Scene_Transition")
 
 [node name="Scene_Transition" parent="." instance=ExtResource("9_bs26y")]
-offset_left = 1270.0
-offset_right = 1270.0
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("4_1c3tk")]

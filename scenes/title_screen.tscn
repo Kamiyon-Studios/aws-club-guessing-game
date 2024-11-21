@@ -137,8 +137,6 @@ autoplay = "aws_logo_rotation"
 
 [node name="Scene_Transition" parent="." instance=ExtResource("18_3o5sx")]
 layout_mode = 1
-offset_left = 1272.0
-offset_right = 1272.0
 
 [connection signal="pressed" from="MarginContainer/title_screen_btns/btn_new_game" to="." method="_on_btn_new_game_pressed"]
 [connection signal="pressed" from="MarginContainer/title_screen_btns/btn_exit" to="." method="_on_btn_exit_pressed"]

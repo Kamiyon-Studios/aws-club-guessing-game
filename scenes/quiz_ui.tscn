@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dyjlvsfvik7vy"]
 
 [ext_resource type="Script" path="res://scripts/quiz_ui_transition.gd" id="1_r5gpc"]
-[ext_resource type="PackedScene" uid="uid://cld7snv3yofb5" path="res://scenes/mechanics_u.tscn" id="2_xx5wg"]
+[ext_resource type="PackedScene" uid="uid://cld7snv3yofb5" path="res://scenes/mechanics_ui.tscn" id="2_xx5wg"]
 [ext_resource type="PackedScene" uid="uid://dx31idrldi5f1" path="res://scenes/main_quiz_ui.tscn" id="3_gtuyt"]
 [ext_resource type="PackedScene" uid="uid://83dcr772fbpv" path="res://scenes/parallax_background.tscn" id="4_1c3tk"]
 [ext_resource type="PackedScene" uid="uid://d0dotrw1v6k13" path="res://scenes/result_ui.tscn" id="4_xp3a5"]
@@ -22,7 +22,5 @@ visible = false
 scene_transiton_manager = NodePath("../Scene_Transition")
 
 [node name="Scene_Transition" parent="." instance=ExtResource("9_bs26y")]
-offset_left = 1270.0
-offset_right = 1270.0
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("4_1c3tk")]

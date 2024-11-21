@@ -27,6 +27,7 @@ signal on_timeout
 
 @export_category("Animations")
 @export var scene_transiton_manager: Node
+@export var game_coutdown_ui: Control
 
 # Node references
 @onready var timer: Timer = $Timer
@@ -53,6 +54,7 @@ func _ready() -> void:
 	next_question_button.connect("pressed", Callable(self, "_show_next_question"))
 	next_question_button.hide()
 
+	game_coutdown_ui.connect("countdown_finished", Callable(self, "_on_countdown_finished"))
 	connect("on_quiz_finish", Callable(self, "_on_quiz_finish"))
 
 # Load the questions from a JSON file
@@ -64,8 +66,6 @@ func _load_questions(path: String) -> void:
 		question.shuffle()
 	else:
 		print("Failed to open file or file does not exist")
-	
-	_show_question(current_question_index)
 
 # Show a question
 func _show_question(index: int) -> void:
@@ -181,4 +181,7 @@ func set_target_question_JSON(index: int) -> void:
 		print("Invalid index")
 	
 	_load_questions(target_JSON_path)
+
+func _on_countdown_finished() -> void:
 	show()
+	_show_question(current_question_index)

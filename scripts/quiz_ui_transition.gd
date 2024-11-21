@@ -1,6 +1,7 @@
 extends Node
 
 @export var scene_transiton_manager: Node
+@export var mechanics_ui: Control
 
 func _ready() -> void:
 	scene_transiton_manager.play_transition_onscreen()
@@ -8,3 +9,4 @@ func _ready() -> void:
 
 func _on_animation_finished() -> void:
 	scene_transiton_manager.play_transition_exit()
+	mechanics_ui.visible = true

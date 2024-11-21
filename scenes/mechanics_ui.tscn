@@ -1,0 +1,163 @@
+[gd_scene load_steps=11 format=3 uid="uid://cld7snv3yofb5"]
+
+[ext_resource type="Script" path="res://scripts/mechanics_u.gd" id="1_h3wth"]
+[ext_resource type="Texture2D" uid="uid://b7mjybhyppvx7" path="res://assets/Art/UI/Sprites/UI_Flat_Bar01a.png" id="2_kk31n"]
+[ext_resource type="FontFile" uid="uid://b23cf0m3da5mv" path="res://assets/Fonts/mini_pixel-7.ttf" id="3_10cdb"]
+[ext_resource type="Texture2D" uid="uid://cvhglivqbi4js" path="res://assets/Art/UI/Sprites/UI_Flat_InputField01a.png" id="4_u3vc6"]
+[ext_resource type="Texture2D" uid="uid://cm1u4l1wf8pj4" path="res://assets/Art/UI/Sprites/UI_Flat_Button01a_2.png" id="5_gg6q2"]
+[ext_resource type="Texture2D" uid="uid://bvuau8swtj3mr" path="res://assets/Art/UI/Sprites/UI_Flat_Button01a_1.png" id="6_jc2ur"]
+[ext_resource type="Texture2D" uid="uid://0tk2nbeh1ptn" path="res://assets/Art/UI/Sprites/UI_Flat_Button01a_3.png" id="7_hkbg4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4dc1n"]
+font = ExtResource("3_10cdb")
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+outline_size = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_oigw6"]
+font = ExtResource("3_10cdb")
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_jomtd"]
+font = ExtResource("3_10cdb")
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+
+[node name="MechanicsUI" type="Control" node_paths=PackedStringArray("start_button1", "start_button2")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_h3wth")
+start_button1 = NodePath("HBoxContainer/Panel/Cat1StartButton")
+start_button2 = NodePath("HBoxContainer/Panel2/Cat2StartButton")
+
+[node name="SelectCategoryRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -150.0
+offset_top = 20.0
+offset_right = 150.0
+offset_bottom = 60.0
+grow_horizontal = 2
+texture = ExtResource("2_kk31n")
+
+[node name="SelectCategoryTitle" type="Label" parent="SelectCategoryRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -3.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Select Question Category"
+label_settings = SubResource("LabelSettings_4dc1n")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -200.0
+offset_right = 400.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 60
+
+[node name="Panel" type="Panel" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_u3vc6")
+
+[node name="Cat1StartButton" type="TextureButton" parent="HBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -70.0
+offset_top = -110.0
+offset_right = 70.0
+offset_bottom = -60.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("5_gg6q2")
+texture_pressed = ExtResource("6_jc2ur")
+texture_hover = ExtResource("7_hkbg4")
+stretch_mode = 0
+
+[node name="StartLabel" type="Label" parent="HBoxContainer/Panel/Cat1StartButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Start"
+label_settings = SubResource("LabelSettings_oigw6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel2" type="Panel" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Panel2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_u3vc6")
+
+[node name="Cat2StartButton" type="TextureButton" parent="HBoxContainer/Panel2"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -70.0
+offset_top = -110.0
+offset_right = 70.0
+offset_bottom = -60.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("5_gg6q2")
+texture_pressed = ExtResource("6_jc2ur")
+texture_hover = ExtResource("7_hkbg4")
+stretch_mode = 0
+
+[node name="StartLabel" type="Label" parent="HBoxContainer/Panel2/Cat2StartButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Start"
+label_settings = SubResource("LabelSettings_jomtd")
+horizontal_alignment = 1
+vertical_alignment = 1

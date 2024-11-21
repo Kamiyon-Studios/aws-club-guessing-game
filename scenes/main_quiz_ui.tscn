@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dx31idrldi5f1"]
+[gd_scene load_steps=25 format=3 uid="uid://dx31idrldi5f1"]
 
 [ext_resource type="Script" path="res://scripts/quiz_ui.gd" id="1_0pgoq"]
 [ext_resource type="Texture2D" uid="uid://cvhglivqbi4js" path="res://assets/Art/UI/Sprites/UI_Flat_InputField01a.png" id="2_vu1cf"]
@@ -9,8 +9,12 @@
 [ext_resource type="Texture2D" uid="uid://0tk2nbeh1ptn" path="res://assets/Art/UI/Sprites/UI_Flat_Button01a_3.png" id="7_u25o8"]
 [ext_resource type="Script" path="res://scripts/quiz_timer_bar.gd" id="8_ojf2s"]
 [ext_resource type="Texture2D" uid="uid://b3w1ehwtxdaeq" path="res://assets/Art/rectangle.png" id="9_g2j3w"]
-[ext_resource type="Texture2D" uid="uid://br25g65hby2xh" path="res://assets/Art/aws mascot.png" id="10_imi1f"]
+[ext_resource type="Texture2D" uid="uid://d2axtrtdyhcty" path="res://assets/Art/mascot_happy.png" id="10_yjgso"]
 [ext_resource type="PackedScene" uid="uid://bbii34ludbsfp" path="res://scenes/feed_back_animations.tscn" id="11_riv4w"]
+[ext_resource type="Texture2D" uid="uid://cg4u1nlc816mn" path="res://assets/Art/mascot_shocked.png" id="12_s5bqr"]
+[ext_resource type="Texture2D" uid="uid://cuxg1vidyllcv" path="res://assets/Art/mascot_surprised.png" id="13_veeeo"]
+[ext_resource type="Texture2D" uid="uid://dhi0evyg1fqx0" path="res://assets/Art/mascot_crying.png" id="14_uqa6q"]
+[ext_resource type="Texture2D" uid="uid://7rfjgy860ofm" path="res://assets/Art/mascot_sad.png" id="15_irl37"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ucxv"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -19,6 +23,94 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m1juq"]
 bg_color = Color(1, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_6626h"]
+resource_name = "Correct_Feedback1"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rectangle/AwsMascot:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("12_s5bqr")]
+}
+
+[sub_resource type="Animation" id="Animation_qkyre"]
+resource_name = "Correct_Feedback2"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rectangle/AwsMascot:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("13_veeeo")]
+}
+
+[sub_resource type="Animation" id="Animation_6g1nh"]
+resource_name = "Incorrect_Feedback1"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rectangle/AwsMascot:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("14_uqa6q")]
+}
+
+[sub_resource type="Animation" id="Animation_80yh8"]
+resource_name = "Incorrect_Feedback2"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rectangle/AwsMascot:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("15_irl37")]
+}
+
+[sub_resource type="Animation" id="Animation_mvcre"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rectangle/AwsMascot:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("10_yjgso")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qfque"]
+_data = {
+"Correct_Feedback1": SubResource("Animation_6626h"),
+"Correct_Feedback2": SubResource("Animation_qkyre"),
+"Incorrect_Feedback1": SubResource("Animation_6g1nh"),
+"Incorrect_Feedback2": SubResource("Animation_80yh8"),
+"RESET": SubResource("Animation_mvcre")
+}
 
 [node name="MainQuizUI" type="Control" node_paths=PackedStringArray("question_label", "timer_label", "question_number_label", "score_label", "button_group", "button_labels", "next_question_button", "next_question_button_label")]
 layout_mode = 3
@@ -71,7 +163,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_ikbne")
-theme_override_font_sizes/font_size = 38
+theme_override_font_sizes/font_size = 32
 text = "Text Label"
 autowrap_mode = 3
 
@@ -157,9 +249,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -90.0
-offset_top = -10.0
+offset_top = -5.0
 offset_right = 90.0
-offset_bottom = 33.0
+offset_bottom = 38.0
 grow_horizontal = 2
 grow_vertical = 0
 texture_normal = ExtResource("5_0e54d")
@@ -338,13 +430,19 @@ scale = Vector2(0.424108, 0.42301)
 texture = ExtResource("9_g2j3w")
 
 [node name="AwsMascot" type="Sprite2D" parent="Rectangle"]
-position = Vector2(13.442, -67.2094)
+position = Vector2(9.43154, -63.8283)
 scale = Vector2(1.06001, 1.06001)
-texture = ExtResource("10_imi1f")
+texture = ExtResource("10_yjgso")
 
-[node name="FeedBackAnimations" parent="." node_paths=PackedStringArray("quiz_ui_script") instance=ExtResource("11_riv4w")]
+[node name="FeedBackAnimations" parent="." node_paths=PackedStringArray("mascot_animation_player", "quiz_ui_script") instance=ExtResource("11_riv4w")]
 visible = false
 layout_mode = 1
+mascot_animation_player = NodePath("../MascotAnimationPlayer")
 quiz_ui_script = NodePath("..")
+
+[node name="MascotAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_qfque")
+}
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

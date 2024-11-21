@@ -52,7 +52,7 @@ tracks/1/path = NodePath("KamiyonLogo:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(1, 2, 3.5, 5),
+"times": PackedFloat32Array(0.566667, 1.26667, 3.5, 5),
 "transitions": PackedFloat32Array(6.49801, 1, 0.307786, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]

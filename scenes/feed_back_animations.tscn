@@ -1,8 +1,18 @@
-[gd_scene load_steps=8 format=3 uid="uid://bbii34ludbsfp"]
+[gd_scene load_steps=11 format=3 uid="uid://bbii34ludbsfp"]
 
 [ext_resource type="Texture2D" uid="uid://b7wwdrmoiuktc" path="res://assets/Art/UI/Sprites/UI_Flat_IconCheck01a.png" id="1_3g8sl"]
 [ext_resource type="Script" path="res://scripts/feed_back_animations.gd" id="1_fham6"]
 [ext_resource type="Texture2D" uid="uid://bm5govwcanmkp" path="res://assets/Art/UI/Sprites/UI_Flat_IconCross01a.png" id="1_ns37g"]
+[ext_resource type="FontFile" uid="uid://b23cf0m3da5mv" path="res://assets/Fonts/mini_pixel-7.ttf" id="3_aens2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ptbmk"]
+font = ExtResource("3_aens2")
+font_size = 100
+font_color = Color(0.941176, 0.25098, 0.25098, 1)
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Animation" id="Animation_ptpsb"]
 resource_name = "Correct_Feedback"
@@ -29,6 +39,45 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [ExtResource("1_3g8sl")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CenterContainer/Sprite2D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.4, 0.566667, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_a8cql"]
+resource_name = "Incorrect_Feedback"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 0), Color(1, 0, 0, 0.784314), Color(1, 0, 0, 0.588235), Color(1, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CenterContainer/Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_ns37g")]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -81,9 +130,21 @@ tracks/2/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Timeout Label:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
-[sub_resource type="Animation" id="Animation_a8cql"]
-resource_name = "Incorrect_Feedback"
+[sub_resource type="Animation" id="Animation_pknwi"]
+resource_name = "Timeout_Feedback"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -94,7 +155,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Color(1, 0, 0, 0), Color(1, 0, 0, 0.784314), Color(1, 0, 0, 0.588235), Color(1, 0, 0, 0)]
+"values": [Color(1, 0, 0, 0), Color(1, 0, 0, 0.784314), Color(1, 0, 0, 0.784314), Color(1, 0, 0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -120,12 +181,25 @@ tracks/2/keys = {
 "update": 1,
 "values": [false, true, false, true, false]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Timeout Label:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.4, 0.566667, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6a6rv"]
 _data = {
 "Correct_Feedback": SubResource("Animation_ptpsb"),
 "Incorrect_Feedback": SubResource("Animation_a8cql"),
-"RESET": SubResource("Animation_vetj6")
+"RESET": SubResource("Animation_vetj6"),
+"Timeout_Feedback": SubResource("Animation_pknwi")
 }
 
 [node name="FeedBackAnimations" type="Control" node_paths=PackedStringArray("feedback_animation_player")]
@@ -162,6 +236,30 @@ metadata/_edit_use_anchors_ = true
 visible = false
 scale = Vector2(9.83333, 9.83333)
 texture = ExtResource("1_3g8sl")
+
+[node name="Timeout Label" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -145.0
+offset_top = -200.0
+offset_right = 145.0
+offset_bottom = -100.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_aens2")
+theme_override_font_sizes/font_size = 100
+text = "Time's up!"
+label_settings = SubResource("LabelSettings_ptbmk")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

@@ -15,15 +15,18 @@ var quiz_ui_script
 var main_menu: bool = false
 var retry: bool = false
 
+func _init() -> void:
+	hide()
+
 func _ready() -> void:
+	scene_transiton_manager.connect("enter_animation_finished", Callable(self, "_on_scene_enter_animation_finished"))
+
 	quiz_ui_script = get_node("../MainQuizUI")
 	quiz_ui_script.connect("on_quiz_finish", Callable(self, "_on_quiz_finish"))
 
 	retry_button.connect("pressed", Callable(self, "_on_retry_button_pressed"))
 	main_menu_button.connect("pressed", Callable(self, "_on_main_menu_button_pressed"))
 
-	scene_transiton_manager.connect("enter_animation_finished", Callable(self, "_on_scene_enter_animation_finished"))
-	hide()
 
 func _on_retry_button_pressed() -> void:
 	retry = true

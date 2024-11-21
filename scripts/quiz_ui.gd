@@ -4,6 +4,7 @@ extends Control
 signal on_question_show
 signal on_answer_action
 signal on_quiz_finish
+signal on_next_question
 
 signal on_correct_answer
 signal on_incorrect_answer
@@ -37,12 +38,13 @@ var timer_value: int = 0
 var correct_answer_index: int = 0
 var max_question: int = 5
 var score: int = 0
+var target_JSON_path: String
+
+func _init() -> void:
+	hide()
 
 # Called when the scene is ready
 func _ready() -> void:
-	hide()
-	_load_questions()
-
 	# Connect button press events for each answer button
 	for button in button_group:
 		button.connect("pressed", Callable(self, "_on_choice_pressed").bind(button_group.find(button)))
@@ -53,17 +55,17 @@ func _ready() -> void:
 
 	connect("on_quiz_finish", Callable(self, "_on_quiz_finish"))
 
-	scene_transiton_manager.connect("exit_animation_finished", Callable(self, "_on_scene_exit_animation_finished"))
-
 # Load the questions from a JSON file
-func _load_questions() -> void:
-	var file = FileAccess.open("res://questions/Questions.json", FileAccess.READ)
+func _load_questions(path: String) -> void:
+	var file = FileAccess.open(path, FileAccess.READ)
 	if file:
 		question = JSON.parse_string(file.get_as_text())
 		file.close()
 		question.shuffle()
 	else:
 		print("Failed to open file or file does not exist")
+	
+	_show_question(current_question_index)
 
 # Show a question
 func _show_question(index: int) -> void:
@@ -117,6 +119,8 @@ func _on_choice_pressed(choice_index: int) -> void:
 
 # Show the next question
 func _show_next_question() -> void:
+	on_next_question.emit()
+
 	if current_question_index + 1 < max_question and current_question_index + 1 < question.size():
 		current_question_index += 1
 		next_question_button.hide()
@@ -134,9 +138,8 @@ func _on_timer_timeout() -> void:
 	_update_timer_display()
 
 	if timer_value <= 0:
-		timer.stop()
-		print("Time's up!")
 		on_timeout.emit()
+		timer.stop()
 		_disable_buttons()
 		_show_feedback(false, correct_answer_index)
 		next_question_button.show()
@@ -161,10 +164,21 @@ func _on_quiz_finish() -> void:
 	hide()
 	print("Game over! Final score: ", score)
 
-func _on_scene_exit_animation_finished() -> void:
-	show()
-
 # Disable all answer buttons
 func _disable_buttons() -> void:
 	for button in button_group:
 		button.mouse_filter = Control.MOUSE_FILTER_IGNORE
+
+
+func set_target_question_JSON(index: int) -> void:
+	if index == 1:
+		target_JSON_path = "res://questions/Questions.json"
+		pass
+	elif index == 2:
+		target_JSON_path = "res://questions/Questions2.json"
+		pass
+	else:
+		print("Invalid index")
+	
+	_load_questions(target_JSON_path)
+	show()

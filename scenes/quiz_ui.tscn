@@ -8,14 +8,18 @@
 [ext_resource type="AudioStream" uid="uid://beastgq61v3sp" path="res://assets/Sounds/music_main_game.mp3" id="7_hh3is"]
 [ext_resource type="PackedScene" uid="uid://c8d227aqdys4c" path="res://scenes/scene_transition.tscn" id="9_bs26y"]
 
-[node name="QuizUI" type="Node" node_paths=PackedStringArray("scene_transiton_manager")]
+[node name="QuizUI" type="Node" node_paths=PackedStringArray("scene_transiton_manager", "mechanics_ui")]
 script = ExtResource("1_r5gpc")
 scene_transiton_manager = NodePath("Scene_Transition")
+mechanics_ui = NodePath("MechanicsU")
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("4_1c3tk")]
 
 [node name="Scene_Transition" parent="." instance=ExtResource("9_bs26y")]
 
-[node name="MechanicsU" parent="." instance=ExtResource("2_xx5wg")]
+[node name="MechanicsU" parent="." node_paths=PackedStringArray("quiz_ui_script") instance=ExtResource("2_xx5wg")]
 visible = false
+quiz_ui_script = NodePath("../MainQuizUI")
 
 [node name="MainQuizUI" parent="." node_paths=PackedStringArray("scene_transiton_manager") instance=ExtResource("3_gtuyt")]
 visible = false
@@ -24,8 +28,6 @@ scene_transiton_manager = NodePath("../Scene_Transition")
 [node name="ResultUI" parent="." node_paths=PackedStringArray("scene_transiton_manager") instance=ExtResource("4_xp3a5")]
 visible = false
 scene_transiton_manager = NodePath("../Scene_Transition")
-
-[node name="ParallaxBackground" parent="." instance=ExtResource("4_1c3tk")]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_hh3is")

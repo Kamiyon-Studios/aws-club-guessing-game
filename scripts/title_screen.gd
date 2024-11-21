@@ -7,10 +7,14 @@ extends Control
 
 @onready var quiz_scene: PackedScene = preload("res://scenes/quiz_ui.tscn")
 
+var is_new_scene: bool = false
+
 func _ready() -> void:
+	is_new_scene = true
 	music_title_screen.play()
 	anim_aws_logo.play()
 
+	scene_transiton_manager.play_transition_exit()
 	scene_transiton_manager.connect("enter_animation_finished", Callable(self, "_on_animation_finished"))
 
 func _on_btn_new_game_pressed() -> void:
@@ -27,4 +31,6 @@ func _on_btn_exit_pressed() -> void:
 	get_tree().quit()
 
 func _on_animation_finished() -> void:
-	get_tree().change_scene_to_packed(quiz_scene)
+	if is_new_scene:
+		is_new_scene = false
+		get_tree().change_scene_to_packed(quiz_scene)

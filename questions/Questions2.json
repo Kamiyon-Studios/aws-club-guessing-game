@@ -1,0 +1,62 @@
+[
+	{
+		"question": "What is the largest mammal on Earth?",
+		"choices": ["Elephant", "Blue Whale", "Giraffe", "Great White Shark"],
+		"answer": 1,
+		"time": 15
+	},
+	{
+		"question": "Which element has the atomic number 1?",
+		"choices": ["Oxygen", "Hydrogen", "Helium", "Nitrogen"],
+		"answer": 1,
+		"time": 10
+	},
+	{
+		"question": "In which year did the Titanic sink?",
+		"choices": ["1912", "1905", "1920", "1915"],
+		"answer": 0,
+		"time": 20
+	},
+	{
+		"question": "What is the boiling point of water at sea level?",
+		"choices": ["90°C", "100°C", "110°C", "120°C"],
+		"answer": 1,
+		"time": 10
+	},
+	{
+		"question": "Which country is known as the Land of the Rising Sun?",
+		"choices": ["China", "Japan", "Thailand", "South Korea"],
+		"answer": 1,
+		"time": 10
+	},
+	{
+		"question": "What is the currency of the United Kingdom?",
+		"choices": ["Euro", "Pound Sterling", "Dollar", "Yen"],
+		"answer": 1,
+		"time": 10
+	},
+	{
+		"question": "Which planet is the smallest in the Solar System?",
+		"choices": ["Venus", "Mercury", "Mars", "Pluto"],
+		"answer": 1,
+		"time": 15
+	},
+	{
+		"question": "Who painted the Mona Lisa?",
+		"choices": ["Vincent van Gogh", "Leonardo da Vinci", "Pablo Picasso", "Claude Monet"],
+		"answer": 1,
+		"time": 10
+	},
+	{
+		"question": "What is the hardest natural substance on Earth?",
+		"choices": ["Gold", "Iron", "Diamond", "Platinum"],
+		"answer": 2,
+		"time": 15
+	},
+	{
+		"question": "How many players are there on a standard soccer team?",
+		"choices": ["9", "10", "11", "12"],
+		"answer": 2,
+		"time": 10
+	}
+]

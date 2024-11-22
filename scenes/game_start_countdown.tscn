@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cmvppk5w0uho"]
+[gd_scene load_steps=8 format=3 uid="uid://cmvppk5w0uho"]
 
 [ext_resource type="Script" path="res://scripts/game_start_countdown.gd" id="1_dxbet"]
 [ext_resource type="FontFile" uid="uid://b23cf0m3da5mv" path="res://assets/Fonts/mini_pixel-7.ttf" id="1_kmrvc"]
+[ext_resource type="AudioStream" uid="uid://mknwkllhh2j1" path="res://assets/Sounds/countdown.mp3" id="3_j2u71"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_o8voj"]
 font = ExtResource("1_kmrvc")
@@ -134,6 +135,18 @@ tracks/9/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("AudioStreamPlayer:playing")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_7id5d"]
 resource_name = "Start_Countdown"
@@ -258,6 +271,18 @@ tracks/9/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("AudioStreamPlayer:playing")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8x6yr"]
 _data = {
@@ -323,3 +348,7 @@ libraries = {
 [node name="countdown_1" type="AudioStreamPlayer" parent="."]
 
 [node name="countdown_2" type="AudioStreamPlayer" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_j2u71")
+volume_db = -5.0

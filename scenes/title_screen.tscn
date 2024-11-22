@@ -213,8 +213,6 @@ autoplay = "aws_logo_rotation"
 
 [node name="Scene_Transition" parent="." instance=ExtResource("18_3o5sx")]
 layout_mode = 1
-offset_left = 1270.0
-offset_right = 1270.0
 
 [node name="TitleScreenPopQuiz" type="Sprite2D" parent="."]
 position = Vector2(294, 192)

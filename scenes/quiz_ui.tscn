@@ -36,4 +36,5 @@ scene_transiton_manager = NodePath("../Scene_Transition")
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_gb3ox")
+autoplay = true
 bus = &"BGM"

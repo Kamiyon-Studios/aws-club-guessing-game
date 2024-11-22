@@ -54,6 +54,7 @@ func _on_correct_answer() -> void:
 	mascot_animation_player.play(random_correct_anim)
 	# Play the correct feedback animation
 	feedback_animation_player.play("Correct_Feedback")
+	_play_random_mascot_sfx(correct_mascot_sfx)
 
 func _on_incorrect_answer() -> void:
 	show()
@@ -63,6 +64,7 @@ func _on_incorrect_answer() -> void:
 	mascot_animation_player.play(random_incorrect_anim)
 	# Play the incorrect feedback animation
 	feedback_animation_player.play("Incorrect_Feedback")
+	_play_random_mascot_sfx(incorrect_mascot_sfx)
 
 func _on_timeout() -> void:
 	show()
@@ -71,6 +73,7 @@ func _on_timeout() -> void:
 	# Play the animation
 	mascot_animation_player.play(random_incorrect_anim)
 	feedback_animation_player.play("Timeout_Feedback")
+	_play_random_mascot_sfx(incorrect_mascot_sfx)
 
 func _on_animation_finished(_anim_name: StringName) -> void:
 	# Hide the animation

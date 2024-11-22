@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://btw2qw0qeom58"]
+
+[ext_resource type="Shader" path="res://shaders/shader_discrete_ocean.gdshader" id="1_ey5r2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ve1ne"]
+shader = ExtResource("1_ey5r2")
+shader_parameter/bottom_color = Color(0.337255, 0.054902, 0.427451, 1)
+shader_parameter/top_color = Color(0.8, 0.0666667, 0.662745, 1)
+shader_parameter/wave_amp = 0.214
+shader_parameter/wave_size = 1.0
+shader_parameter/wave_time_mul = 2.0
+shader_parameter/total_phases = 13
+
+[node name="shader_discrete_ocean" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_ve1ne")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

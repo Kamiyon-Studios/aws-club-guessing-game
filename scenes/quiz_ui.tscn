@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://dyjlvsfvik7vy"]
 
 [ext_resource type="Script" path="res://scripts/quiz_ui_transition.gd" id="1_r5gpc"]
-[ext_resource type="PackedScene" uid="uid://btw2qw0qeom58" path="res://shader_discrete_ocean.tscn" id="2_ij54y"]
+[ext_resource type="PackedScene" uid="uid://btw2qw0qeom58" path="res://scenes/shader_discrete_ocean.tscn" id="2_ij54y"]
 [ext_resource type="PackedScene" uid="uid://cld7snv3yofb5" path="res://scenes/mechanics_ui.tscn" id="2_xx5wg"]
 [ext_resource type="PackedScene" uid="uid://dx31idrldi5f1" path="res://scenes/main_quiz_ui.tscn" id="3_gtuyt"]
 [ext_resource type="PackedScene" uid="uid://cmvppk5w0uho" path="res://scenes/game_start_countdown.tscn" id="3_p4rcm"]

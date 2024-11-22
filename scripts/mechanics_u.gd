@@ -1,6 +1,7 @@
 extends Control
 
 signal on_game_start
+@onready var sfx_buttons: AudioStreamPlayer = $sfx_buttons
 
 @export_category("Start Buttons")
 @export var start_button1: TextureButton
@@ -21,3 +22,11 @@ func _game_start() -> void:
 	start_button1.disabled = true
 	start_button2.disabled = true
 	hide()
+
+
+func _on_btn_facts_pressed() -> void:
+	sfx_buttons.play()
+
+
+func _on_btn_trivia_pressed() -> void:
+	sfx_buttons.play()

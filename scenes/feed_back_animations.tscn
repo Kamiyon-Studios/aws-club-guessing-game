@@ -1,8 +1,8 @@
 [gd_scene load_steps=11 format=3 uid="uid://bbii34ludbsfp"]
 
-[ext_resource type="Texture2D" uid="uid://b7wwdrmoiuktc" path="res://assets/Art/UI/Sprites/UI_Flat_IconCheck01a.png" id="1_3g8sl"]
+[ext_resource type="Texture2D" uid="uid://b7wwdrmoiuktc" path="res://assets/Art/UI/UI_Flat_IconCheck01a.png" id="1_3g8sl"]
 [ext_resource type="Script" path="res://scripts/feed_back_animations.gd" id="1_fham6"]
-[ext_resource type="Texture2D" uid="uid://bm5govwcanmkp" path="res://assets/Art/UI/Sprites/UI_Flat_IconCross01a.png" id="1_ns37g"]
+[ext_resource type="Texture2D" uid="uid://bm5govwcanmkp" path="res://assets/Art/UI/UI_Flat_IconCross01a.png" id="1_ns37g"]
 [ext_resource type="FontFile" uid="uid://b23cf0m3da5mv" path="res://assets/Fonts/mini_pixel-7.ttf" id="3_aens2"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ptbmk"]

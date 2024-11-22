@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cld7snv3yofb5"]
+[gd_scene load_steps=12 format=3 uid="uid://cld7snv3yofb5"]
 
 [ext_resource type="Script" path="res://scripts/mechanics_u.gd" id="1_h3wth"]
 [ext_resource type="PackedScene" uid="uid://bp25l8a8lenol" path="res://scenes/shader_discrete_clouds.tscn" id="2_ehjr7"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://deutlcyqhu3om" path="res://assets/Art/UI/buttons/btn_trivia_pressed.png" id="6_xxn3q"]
 [ext_resource type="Texture2D" uid="uid://bnmrrqwhs7280" path="res://assets/Art/UI/buttons/btn_trivia_hover.png" id="7_t818y"]
 [ext_resource type="Theme" uid="uid://dtjgilmtwhb0f" path="res://text_theme.tres" id="8_jui4r"]
+[ext_resource type="AudioStream" uid="uid://wixq1oyvlk11" path="res://assets/Sounds/sfx_buttons.mp3" id="10_bvqbw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bs7b8"]
 
@@ -66,3 +67,9 @@ theme = ExtResource("8_jui4r")
 text = "Select Question Category"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="sfx_buttons" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_bvqbw")
+
+[connection signal="pressed" from="HBoxContainer/btn_facts" to="." method="_on_btn_facts_pressed"]
+[connection signal="pressed" from="HBoxContainer/btn_trivia" to="." method="_on_btn_trivia_pressed"]

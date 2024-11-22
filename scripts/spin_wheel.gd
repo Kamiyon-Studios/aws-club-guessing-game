@@ -141,5 +141,5 @@ func winning_prize(item_code):
 
 # Restart button function
 func _on_btn_restart_pressed() -> void:
-	var main = preload("res://scenes/splash_screen.tscn")
-	get_tree().change_scene_to_packed(main)
+	var palit = preload("res://scenes/splash_screen.tscn")
+	get_tree().change_scene_to_packed(palit)

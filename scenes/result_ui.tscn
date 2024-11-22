@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bpt6c2kcn1ske" path="res://assets/Art/UI/buttons/btn_texture_pressed.png" id="7_kodvq"]
 [ext_resource type="Texture2D" uid="uid://7rfjgy860ofm" path="res://assets/Art/mascot_sad.png" id="7_lm7me"]
 [ext_resource type="Texture2D" uid="uid://brddidggbrkfl" path="res://assets/Art/UI/buttons/btn_texture_hover.png" id="8_vhl3c"]
-[ext_resource type="Theme" path="res://text_choices.tres" id="9_hmf3t"]
+[ext_resource type="Theme" uid="uid://br87o6rh4kiea" path="res://text_choices.tres" id="9_hmf3t"]
 [ext_resource type="Texture2D" uid="uid://b3w1ehwtxdaeq" path="res://assets/Art/rectangle.png" id="12_5lfbn"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_em2uh"]
@@ -152,8 +152,8 @@ stretch_mode = 4
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_top = 52.0
-offset_bottom = 98.0
+offset_top = 10.0
+offset_bottom = 56.0
 grow_horizontal = 2
 theme = ExtResource("9_hmf3t")
 text = "Quiz Finish"
@@ -169,9 +169,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -105.0
-offset_top = -25.5
+offset_top = -45.5
 offset_right = 105.0
-offset_bottom = 25.5
+offset_bottom = 5.5
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("9_hmf3t")
@@ -180,3 +180,80 @@ theme_override_font_sizes/font_size = 50
 text = "Final Score: 0"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="qualifyLabel" type="Label" parent="panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -154.0
+offset_top = -104.0
+offset_right = 154.0
+offset_bottom = -53.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("9_hmf3t")
+theme_override_fonts/font = ExtResource("3_qfylj")
+theme_override_font_sizes/font_size = 45
+text = "You failed to qualify..."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="qualifyLabel2" type="Label" parent="panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -181.5
+offset_top = -68.0
+offset_right = 181.5
+offset_bottom = -17.0
+grow_horizontal = 2
+theme = ExtResource("9_hmf3t")
+theme_override_fonts/font = ExtResource("3_qfylj")
+theme_override_font_sizes/font_size = 30
+text = "bawi na lang next enrichment HAHAHAHA"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RouletteButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -14.0
+offset_right = 128.0
+offset_bottom = 70.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("6_rtkos")
+texture_pressed = ExtResource("7_kodvq")
+texture_hover = ExtResource("8_vhl3c")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="spin" type="Label" parent="RouletteButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.0
+offset_top = -23.0
+offset_right = 58.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("9_hmf3t")
+text = "SPIN THE WHEEL!"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[connection signal="pressed" from="RouletteButton" to="." method="_on_roulette_button_pressed"]

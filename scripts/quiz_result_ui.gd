@@ -1,5 +1,10 @@
 extends Control
 
+@onready var qualify_label: Label = $panel/qualifyLabel
+@onready var qualify_label_2: Label = $panel/qualifyLabel2
+@onready var roulette_button: TextureButton = $RouletteButton
+
+
 @export_category("Labels")
 @export var score_label: Label
 
@@ -19,6 +24,10 @@ func _init() -> void:
 	hide()
 
 func _ready() -> void:
+	qualify_label.visible = false
+	qualify_label_2.visible = false
+	roulette_button.visible = false
+		
 	scene_transiton_manager.connect("enter_animation_finished", Callable(self, "_on_scene_enter_animation_finished"))
 
 	quiz_ui_script = get_node("../MainQuizUI")
@@ -40,9 +49,20 @@ func _on_main_menu_button_pressed() -> void:
 func _on_quiz_finish() -> void:
 	score_label.text = "Score: " + str(quiz_ui_script.score)
 	show()
+	
+	if quiz_ui_script.score <= 2:
+		qualify_label.visible = true
+		qualify_label_2.visible = true
+	else:
+		roulette_button.visible = true
 
 func _on_scene_enter_animation_finished() -> void:
 	if main_menu:
 		get_tree().change_scene_to_file("res://scenes/title_screen.tscn")
 	if retry:
 		get_tree().reload_current_scene()
+
+
+func _on_roulette_button_pressed() -> void:
+	var main = preload("res://scenes/spin_wheel.tscn")
+	get_tree().change_scene_to_packed(main)

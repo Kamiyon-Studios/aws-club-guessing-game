@@ -1,62 +1,50 @@
 [
-	{
-		"question": "What year was AWS Created?",
-		"choices": ["2004", "2005 ", "2006", "2007"],
-		"answer": 2,
-		"time": 10
-	},
-	{
-		"question": "Who is considered the primary leader behind the creation of AWS?",
-		"choices": ["Jeff Bezos", "Andy Jassy", "Satya Nadella", "Sundar Pichai"],
-		"answer": 1,
-		"time": 10
-	},
-	{
-		"question": "Which company created AWS?",
-		"choices": ["Microsoft", "Google", "Amazon ", "IBM"],
-		"answer": 2,
-		"time": 10
-	},
-	{
-		"question": "Who was Amazon's CEO when AWS was launched?",
-		"choices": ["Andy Jassy", "Jeff Bezos", "Elon Musk", "Larry Page"],
-		"answer": 1,
-		"time": 10
-	},
-	{
-		"question": "Test",
-		"choices": ["Test", "Test", "Test", "Test"],
-		"answer": 0,
-		"time": 10
-	},
-	{
-		"question": "Test",
-		"choices": ["Test", "Test", "Test", "Test"],
-		"answer": 0,
-		"time": 10
-	},
-	{
-		"question": "Test",
-		"choices": ["Test", "Test", "Test", "Test"],
-		"answer": 0,
-		"time": 10
-	},
-	{
-		"question": "Test",
-		"choices": ["Test", "Test", "Test", "Test"],
-		"answer": 0,
-		"time": 10
-	},
-	{
-		"question": "Test",
-		"choices": ["Test", "Test", "Test", "Test"],
-		"answer": 0,
-		"time": 10
-	},
-	{
-		"question": "Test",
-		"choices": ["Test", "Test", "Test", "Test"],
-		"answer": 0,
-		"time": 10
-	}
+  {
+	"question": "From what company is Paul Sears from?",
+	"choices": ["Amazon Web Services Philippines", "Connected Women & MettaMatch", "Virtuals Protocol", "Kalpa Inc."],
+	"answer": 0,
+	"time": 10
+  },
+  {
+	"question": "From what company is Gina Romero from?",
+	"choices": ["Amazon Web Services Philippines", "Connected Women & MettaMatch", "Virtuals Protocol", "Kalpa Inc."],
+	"answer": 1,
+	"time": 10
+  },
+  {
+	"question": "From what company is Brianna Chang from?",
+	"choices": ["Amazon Web Services Philippines", "Connected Women & MettaMatch", "Virtuals Protocol", "Kalpa Inc."],
+	"answer": 2,
+	"time": 10
+  },
+  {
+	"question": "From what company is Mel Vargas from?",
+	"choices": ["Amazon Web Services Philippines", "Connected Women & MettaMatch", "Virtuals Protocol", "Kalpa Inc."],
+	"answer": 3,
+	"time": 10
+  },
+  {
+	"question": "Whose presentation is 'Leveraging AWS for Game Development and Data Science: Opportunities and Applications'?",
+	"choices": ["Paul Sears", "Gina Romero", "Mel Vargas", "Petr Sebesta"],
+	"answer": 0,
+	"time": 10
+  },
+  {
+	"question": "Whose presentation is 'AI for ALL - Bringing the Digital Divide for a Better Future'?",
+	"choices": ["Paul Sears", "Gina Romero", "Mel Vargas", "Petr Sebesta"],
+	"answer": 1,
+	"time": 10
+  },
+  {
+	"question": "Whose presentation is 'How to Land a High-Paying Job in Tech Without Applying'?",
+	"choices": ["Paul Sears", "Gina Romero", "Mel Vargas", "Petr Sebesta"],
+	"answer": 2,
+	"time": 10
+  },
+  {
+	"question": "Whose presentation is 'Confidence upgrade: From Call Center to Code'?",
+	"choices": ["Paul Sears", "Gina Romero", "Mel Vargas", "Petr Sebesta"],
+	"answer": 3,
+	"time": 10
+  }
 ]

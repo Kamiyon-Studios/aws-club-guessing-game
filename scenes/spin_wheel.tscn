@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://clfvobvi3rno6"]
+[gd_scene load_steps=22 format=3 uid="uid://clfvobvi3rno6"]
 
 [ext_resource type="Texture2D" uid="uid://o5281jsg2i68" path="res://assets/Art/assets_spin_wheel/spin_wheel_background.png" id="1_h5jq3"]
 [ext_resource type="Script" path="res://scripts/spin_wheel.gd" id="1_oakmn"]
@@ -19,6 +19,8 @@
 [ext_resource type="Texture2D" uid="uid://blbw7mmng4jov" path="res://assets/Art/assets_spin_wheel/lace.png" id="13_powl8"]
 [ext_resource type="Texture2D" uid="uid://c3mihrbfgwsgm" path="res://assets/Art/assets_spin_wheel/ballpen.png" id="14_p4u2m"]
 [ext_resource type="AudioStream" uid="uid://b462icuj61jty" path="res://assets/Sounds/sfx_roulette.mp3" id="19_3g6y8"]
+[ext_resource type="AudioStream" uid="uid://dujbr074ufx0" path="res://assets/Sounds/congrats.mp3" id="20_tpp8v"]
+[ext_resource type="AudioStream" uid="uid://4ixg86nxledu" path="res://assets/Sounds/winner.mp3" id="21_ayla2"]
 
 [node name="spin_wheel" type="Control"]
 layout_mode = 3
@@ -106,7 +108,6 @@ pivot_offset = Vector2(100, 0)
 texture = ExtResource("6_iiacy")
 
 [node name="win_panel" type="Panel" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -115,7 +116,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="panel_background" type="TextureRect" parent="win_panel"]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -133,7 +133,6 @@ expand_mode = 1
 stretch_mode = 4
 
 [node name="win1_pic" type="TextureRect" parent="win_panel/panel_background"]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -223,7 +222,7 @@ theme = ExtResource("11_e8wo5")
 theme_override_font_sizes/font_size = 80
 text = "AWS PIN!"
 
-[node name="btn_restart" type="TextureButton" parent="win_panel"]
+[node name="btn_restart" type="TextureButton" parent="."]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -239,7 +238,7 @@ texture_normal = ExtResource("9_m0nv7")
 texture_pressed = ExtResource("10_10qhb")
 texture_hover = ExtResource("11_6smyw")
 
-[node name="Label" type="Label" parent="win_panel/btn_restart"]
+[node name="Label" type="Label" parent="btn_restart"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -260,5 +259,25 @@ vertical_alignment = 1
 [node name="roulette_sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("19_3g6y8")
 
+[node name="congrats_lbl" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme = ExtResource("12_45tec")
+text = "CONGRATULATIONS!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="congrats" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("20_tpp8v")
+
+[node name="bgm" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("21_ayla2")
+
 [connection signal="pressed" from="wheel/btn_spin" to="." method="_on_btn_spin_pressed"]
-[connection signal="pressed" from="win_panel/btn_restart" to="." method="_on_btn_restart_pressed"]
+[connection signal="pressed" from="btn_restart" to="." method="_on_btn_restart_pressed"]

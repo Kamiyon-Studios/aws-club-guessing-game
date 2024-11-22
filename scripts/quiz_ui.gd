@@ -1,4 +1,5 @@
 extends Control
+@onready var timer_sound: AudioStreamPlayer = $timer_sound
 
 # Signals
 signal on_question_show
@@ -40,6 +41,7 @@ var correct_answer_index: int = 0
 var max_question: int = 5
 var score: int = 0
 var target_JSON_path: String
+
 
 func _init() -> void:
 	hide()
@@ -106,6 +108,7 @@ func _on_choice_pressed(choice_index: int) -> void:
 	if is_correct:
 		on_correct_answer.emit()
 		score += 1
+		
 	else:
 		on_incorrect_answer.emit()
 
@@ -192,3 +195,5 @@ func set_target_question_JSON(index: int) -> void:
 func _on_countdown_finished() -> void:
 	show()
 	_show_question(current_question_index)
+	print("Playing timer sound") # Debug
+	timer_sound.play()

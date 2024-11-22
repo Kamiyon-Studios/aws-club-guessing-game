@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/sfx_timer.mp3-981c400bd817de210f7b131faf233c3
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

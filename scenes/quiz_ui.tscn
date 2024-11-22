@@ -27,6 +27,7 @@ visible = false
 quiz_ui_script = NodePath("../MainQuizUI")
 
 [node name="MainQuizUI" parent="." node_paths=PackedStringArray("scene_transiton_manager", "game_coutdown_ui") instance=ExtResource("3_gtuyt")]
+visible = false
 scene_transiton_manager = NodePath("../Scene_Transition")
 game_coutdown_ui = NodePath("../GameStartCountdown")
 

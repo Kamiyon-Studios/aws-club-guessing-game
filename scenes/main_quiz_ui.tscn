@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://dx31idrldi5f1"]
+[gd_scene load_steps=31 format=3 uid="uid://dx31idrldi5f1"]
 
 [ext_resource type="Script" path="res://scripts/quiz_ui.gd" id="1_0pgoq"]
 [ext_resource type="FontFile" uid="uid://b23cf0m3da5mv" path="res://assets/Fonts/mini_pixel-7.ttf" id="3_ikbne"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bbii34ludbsfp" path="res://scenes/feed_back_animations.tscn" id="11_riv4w"]
 [ext_resource type="Texture2D" uid="uid://cuxg1vidyllcv" path="res://assets/Art/mascot_surprised.png" id="13_veeeo"]
 [ext_resource type="Texture2D" uid="uid://dhi0evyg1fqx0" path="res://assets/Art/mascot_crying.png" id="14_uqa6q"]
+[ext_resource type="AudioStream" uid="uid://booxjcub403jh" path="res://assets/Sounds/sfx_timer.mp3" id="15_3rfqm"]
 [ext_resource type="Texture2D" uid="uid://7rfjgy860ofm" path="res://assets/Art/mascot_sad.png" id="15_irl37"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ucxv"]
@@ -588,5 +589,8 @@ libraries = {
 
 [node name="SFX1" type="AudioStreamPlayer" parent="."]
 bus = &"SFX"
+
+[node name="timer_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_3rfqm")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

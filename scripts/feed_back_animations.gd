@@ -25,6 +25,8 @@ var correct_mascot_sfx: Array[AudioStream] = [
 	preload("res://assets/Sounds/sfx_reaction/sfx_mascot_happy_2.mp3"),
 	preload("res://assets/Sounds/sfx_reaction/sfx_mascot_shocked.mp3"),
 	preload("res://assets/Sounds/sfx_reaction/sfx_mascot_shocked_2.mp3"),
+	preload("res://assets/Sounds/sfx_reaction/sfx_mascot_shocked.mp3"),
+	preload("res://assets/Sounds/sfx_reaction/sfx_mascot_surprised.mp3")
 ]
 
 var incorrect_mascot_sfx: Array[AudioStream] = [
@@ -32,8 +34,18 @@ var incorrect_mascot_sfx: Array[AudioStream] = [
 	preload("res://assets/Sounds/sfx_reaction/sfx_mascot_crying_2.mp3"),
 	preload("res://assets/Sounds/sfx_reaction/sfx_mascot_sad_1.mp3"),
 	preload("res://assets/Sounds/sfx_reaction/sfx_mascot_sad_2.mp3"),
+	preload("res://assets/Sounds/sfx_reaction/sfx_mascot_sad_3.mp3"),
+	preload("res://assets/Sounds/sfx_reaction/sfx_mascot_shocked_2.mp3"),
 ]
 
+var correct_answer_sfx: Array[AudioStream] = [
+	preload("res://assets/Sounds/sfx_correct_answer_1.mp3"),
+	preload("res://assets/Sounds/sfx_correct_answer_2.mp3"),
+	preload("res://assets/Sounds/sfx_correct_answer_3.mp3"),
+	preload("res://assets/Sounds/sfx_correct_answer_4.mp3")
+]
+	
+	
 func _init() -> void:
 	hide()
 
@@ -59,6 +71,7 @@ func _on_correct_answer() -> void:
 	# Play the correct feedback animation
 	feedback_animation_player.play("Correct_Feedback")
 	_play_random_mascot_sfx(correct_mascot_sfx)
+	_play_random_mascot_sfx(correct_answer_sfx)
 	sfx_correct_answer.play()
 
 func _on_incorrect_answer() -> void:

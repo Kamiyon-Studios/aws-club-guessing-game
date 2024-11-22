@@ -1,4 +1,6 @@
 extends Control
+@onready var bgm: AudioStreamPlayer = $bgm
+@onready var congrats: AudioStreamPlayer = $congrats
 
 @onready var win_panel: Panel = $win_panel
 @onready var panel_background: TextureRect = $win_panel/panel_background
@@ -7,6 +9,8 @@ extends Control
 @onready var win_3_pic: TextureRect = $win_panel/panel_background/win3_pic
 @onready var win_4_pic: TextureRect = $win_panel/panel_background/win4_pic
 @onready var win_lbl: Label = $win_panel/panel_background/win_lbl
+@onready var btn_restart: TextureButton = $btn_restart
+@onready var congrats_lbl: Label = $congrats_lbl
 
 @onready var roulette_sound: AudioStreamPlayer = $roulette_sound
 
@@ -75,6 +79,27 @@ var vat_pham = [
 	}
 ]
 
+# Reset everything when the scene is loaded
+func _ready():
+	print("Spin Wheel Scene Loaded")
+	reset_scene()
+	bgm.play()
+
+# Function to reset the scene state
+func reset_scene():
+	is_spin = false
+	reward_position = 0
+	win_panel.visible = false
+	panel_background.visible = false
+	win_1_pic.visible = false
+	win_2_pic.visible = false
+	win_3_pic.visible = false
+	win_4_pic.visible = false
+	win_lbl.visible = false
+	btn_restart.visible = false
+	congrats_lbl.visible = false
+
+# Spin the wheel when the spin button is pressed
 func _on_btn_spin_pressed():
 	roulette_sound.play()
 	if not is_spin:  # Check if the spinner is not already spinning
@@ -86,16 +111,15 @@ func _on_btn_spin_pressed():
 			is_spin = false  # Allow user to spin again
 			
 			if current_rotation > 360:
-				# Adjust rotation to prevent exceeding a full circle
 				%front.rotation_degrees = fmod(current_rotation, 360)
 
-			# Determine which item was selected based on the reward position
+			# Determine the item based on the reward position
 			var item_code = -1
 			for item in vat_pham:
 				if reward_position >= item.from - 22.5 and reward_position <= item.to - 22.5:
 					print(item.name)  # Display the item's name
 					item_code = item.item_code  # Set the item code
-					break  # Exit loop once match is found
+					break
 
 			# Call the function to display the prize
 			if item_code != -1:
@@ -109,22 +133,20 @@ func _on_btn_spin_pressed():
 			%front, "rotation_degrees",
 			reward_position + 360 * speed * power, 3
 		).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CIRC)
-		tween.finished
 
 # Handle the prize display logic based on the item code
 func winning_prize(item_code):
-	# Ensure the panel and all related elements are visible
 	win_panel.visible = true
-	panel_background.visible = true  # Ensure the background is also visible
+	panel_background.visible = true
 	win_lbl.visible = true
 	
-	# Hide all prize images initially
+	# Hide all prize images
 	win_1_pic.visible = false
 	win_2_pic.visible = false
 	win_3_pic.visible = false
 	win_4_pic.visible = false
 	
-	# Match item_code to determine the prize
+	# Show the corresponding prize
 	match item_code:
 		1:
 			win_1_pic.visible = true
@@ -140,9 +162,11 @@ func winning_prize(item_code):
 			win_lbl.text = "AWS BALLPEN!!"
 		_:
 			win_lbl.text = "No prize!"  # Fallback for any unexpected item_code
-
+	congrats_lbl.visible = true
+	btn_restart.visible = true
+	congrats.play()
+	
 # Restart button function
 func _on_btn_restart_pressed() -> void:
 	print("Restart button pressed")
-	var palit = preload("res://scenes/splash_screen.tscn")
-	get_tree().change_scene_to_packed(palit)
+	get_tree().quit()

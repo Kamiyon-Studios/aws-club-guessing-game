@@ -8,6 +8,7 @@ extends Control
 @onready var win_4_pic: TextureRect = $win_panel/panel_background/win4_pic
 @onready var win_lbl: Label = $win_panel/panel_background/win_lbl
 
+@onready var roulette_sound: AudioStreamPlayer = $roulette_sound
 
 @export var is_spin: bool = false  # Determines if the spinner is active
 @export var speed: int = 10       # Spin speed
@@ -75,6 +76,7 @@ var vat_pham = [
 ]
 
 func _on_btn_spin_pressed():
+	roulette_sound.play()
 	if not is_spin:  # Check if the spinner is not already spinning
 		is_spin = true  # Set spinner state to active
 		var tween = get_tree().create_tween().set_parallel(true)
@@ -141,5 +143,6 @@ func winning_prize(item_code):
 
 # Restart button function
 func _on_btn_restart_pressed() -> void:
+	print("Restart button pressed")
 	var palit = preload("res://scenes/splash_screen.tscn")
 	get_tree().change_scene_to_packed(palit)

@@ -18,10 +18,10 @@
 		"time": 10
 	},
 	{
-		"question": "What problem did AWS aim to solve for businesses?",
-		"choices": ["Test", "Test", "Test", "Test"],
-		"answer": 0,
-		"time": 7
+		"question": "Who was Amazon's CEO when AWS was launched?",
+		"choices": ["Andy Jassy", "Jeff Bezos", "Elon Musk", "Larry Page"],
+		"answer": 1,
+		"time": 10
 	},
 	{
 		"question": "Test",

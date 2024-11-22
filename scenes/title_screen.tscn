@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://d3t0hwjvm6cug"]
+[gd_scene load_steps=15 format=3 uid="uid://d3t0hwjvm6cug"]
 
 [ext_resource type="Script" path="res://scripts/title_screen.gd" id="1_gffl3"]
 [ext_resource type="PackedScene" uid="uid://83dcr772fbpv" path="res://scenes/parallax_background.tscn" id="1_tlg85"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://mgy5yut04ics" path="res://assets/Art/UI/buttons/btn_newgame_normal.png" id="2_eoqfr"]
 [ext_resource type="Texture2D" uid="uid://b8sbo6nharnr2" path="res://assets/Art/UI/buttons/btn_newgame_pressed.png" id="3_n3v62"]
 [ext_resource type="Texture2D" uid="uid://c1hjcyyokas0o" path="res://assets/Art/UI/buttons/btn_newgame_hover.png" id="4_b1iod"]
-[ext_resource type="AudioStream" uid="uid://54i04rkh5riw" path="res://assets/Sounds/music_title_screen.mp3" id="10_mlo6o"]
 [ext_resource type="Texture2D" uid="uid://w8mvveisoakc" path="res://assets/Art/UI/buttons/btn_exit_normal.png" id="11_2ed03"]
 [ext_resource type="Texture2D" uid="uid://b4twhsdsb8stf" path="res://assets/Art/UI/buttons/btn_exit_pressed.png" id="12_8e1cs"]
 [ext_resource type="Texture2D" uid="uid://7srdd4qphg6n" path="res://assets/Art/UI/buttons/btn_exit_hover.png" id="13_uiqc0"]
@@ -87,9 +86,6 @@ scene_transiton_manager = NodePath("Scene_Transition")
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("1_tlg85")]
 
-[node name="Scene_Transition" parent="." instance=ExtResource("18_3o5sx")]
-layout_mode = 1
-
 [node name="KamiyonCopyright" type="Sprite2D" parent="."]
 scale = Vector2(0.749946, 0.749538)
 texture = ExtResource("2_d3gy8")
@@ -127,7 +123,6 @@ texture_pressed = ExtResource("12_8e1cs")
 texture_hover = ExtResource("13_uiqc0")
 
 [node name="music_title_screen" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("10_mlo6o")
 
 [node name="Aws2" type="Sprite2D" parent="."]
 position = Vector2(712, 270)
@@ -139,6 +134,9 @@ libraries = {
 "": SubResource("AnimationLibrary_rfo7x")
 }
 autoplay = "aws_logo_rotation"
+
+[node name="Scene_Transition" parent="." instance=ExtResource("18_3o5sx")]
+layout_mode = 1
 
 [connection signal="pressed" from="MarginContainer/title_screen_btns/btn_new_game" to="." method="_on_btn_new_game_pressed"]
 [connection signal="pressed" from="MarginContainer/title_screen_btns/btn_exit" to="." method="_on_btn_exit_pressed"]

@@ -369,6 +369,8 @@ theme = ExtResource("7_sll6q")
 text = "Button 1"
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 2
+text_overrun_behavior = 1
 
 [node name="TextureButton2" type="TextureButton" parent="ChoicesButton/GridContainer"]
 layout_mode = 2
@@ -395,6 +397,7 @@ theme = ExtResource("7_sll6q")
 text = "Button 2"
 horizontal_alignment = 1
 vertical_alignment = 1
+text_overrun_behavior = 1
 
 [node name="TextureButton3" type="TextureButton" parent="ChoicesButton/GridContainer"]
 layout_mode = 2
@@ -421,6 +424,7 @@ theme = ExtResource("7_sll6q")
 text = "Button 3"
 horizontal_alignment = 1
 vertical_alignment = 1
+text_overrun_behavior = 1
 
 [node name="TextureButton4" type="TextureButton" parent="ChoicesButton/GridContainer"]
 layout_mode = 2
@@ -447,6 +451,7 @@ theme = ExtResource("7_sll6q")
 text = "Button 4"
 horizontal_alignment = 1
 vertical_alignment = 1
+text_overrun_behavior = 1
 
 [node name="Timer" type="Timer" parent="."]
 

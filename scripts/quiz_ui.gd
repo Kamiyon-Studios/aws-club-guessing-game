@@ -179,10 +179,10 @@ func _disable_buttons() -> void:
 
 func set_target_question_JSON(index: int) -> void:
 	if index == 1:
-		target_JSON_path = "res://questions/Questions.json"
+		target_JSON_path = "res://questions/questions_facts.json"
 		pass
 	elif index == 2:
-		target_JSON_path = "res://questions/Questions2.json"
+		target_JSON_path = "res://questions/questions_trivia.json"
 		pass
 	else:
 		print("Invalid index")

@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://ds3jfcv66ift" path="res://assets/Art/UI/buttons/btn_texture_normal.png" id="4_1f6kt"]
 [ext_resource type="Texture2D" uid="uid://bpt6c2kcn1ske" path="res://assets/Art/UI/buttons/btn_texture_pressed.png" id="5_lqir4"]
 [ext_resource type="Texture2D" uid="uid://brddidggbrkfl" path="res://assets/Art/UI/buttons/btn_texture_hover.png" id="6_ctgk4"]
-[ext_resource type="Theme" uid="uid://bg13vitpck35p" path="res://text_choices.tres" id="7_sll6q"]
+[ext_resource type="Theme" uid="uid://br87o6rh4kiea" path="res://text_choices.tres" id="7_sll6q"]
 [ext_resource type="Shader" path="res://shaders/progress_bar.gdshader" id="8_ikjwf"]
 [ext_resource type="Script" path="res://scripts/quiz_timer_bar.gd" id="8_ojf2s"]
 [ext_resource type="Texture2D" uid="uid://b3w1ehwtxdaeq" path="res://assets/Art/rectangle.png" id="9_g2j3w"]
@@ -82,7 +82,6 @@ length = 0.001
 
 [sub_resource type="Animation" id="Animation_qkyre"]
 resource_name = "Correct_Feedback2"
-length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -95,10 +94,22 @@ tracks/0/keys = {
 "update": 1,
 "values": [ExtResource("13_veeeo")]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Rectangle/AwsMascot:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(0.258816, 3.13834, 1),
+"update": 0,
+"values": [Vector2(1.06001, 1.06001), Vector2(1.4, 1.4), Vector2(1.06001, 1.06001)]
+}
 
 [sub_resource type="Animation" id="Animation_6g1nh"]
 resource_name = "Incorrect_Feedback1"
-length = 0.001
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -111,10 +122,34 @@ tracks/0/keys = {
 "update": 1,
 "values": [ExtResource("14_uqa6q")]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Rectangle/AwsMascot:skew")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(0.277392, 3.86374, 1),
+"update": 0,
+"values": [0.0, 0.101229, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Rectangle/AwsMascot:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(0.31864, 3.36358, 1),
+"update": 0,
+"values": [Vector2(1.06001, 1.06001), Vector2(1.06001, 1.06001), Vector2(1.06001, 1.06001)]
+}
 
 [sub_resource type="Animation" id="Animation_80yh8"]
 resource_name = "Incorrect_Feedback2"
-length = 0.001
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -126,6 +161,30 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [ExtResource("15_irl37")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Rectangle/AwsMascot:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.7, 1),
+"transitions": PackedFloat32Array(0.267944, 5.65685, 5.46416, 0.267944),
+"update": 0,
+"values": [Vector2(1.06001, 1.06001), Vector2(1.03, 1.03), Vector2(1.1, 1.1), Vector2(1.06001, 1.06001)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Rectangle/AwsMascot:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.7, 1),
+"transitions": PackedFloat32Array(0.277392, 5.65685, 3.36358, 0.277392),
+"update": 0,
+"values": [Vector2(9.43154, -63.8283), Vector2(9.432, -55.272), Vector2(9.432, -77), Vector2(9.43154, -63.8283)]
 }
 
 [sub_resource type="Animation" id="Animation_mvcre"]
@@ -141,6 +200,42 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [ExtResource("10_yjgso")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Rectangle/AwsMascot:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.06001, 1.06001)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Rectangle/AwsMascot:skew")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Rectangle/AwsMascot:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(9.43154, -63.8283)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qfque"]

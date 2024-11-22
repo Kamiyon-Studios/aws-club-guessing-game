@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5atml04yj3xj"]
+
+[ext_resource type="Shader" path="res://shaders/crt_screen.gdshader" id="1_1om3w"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5lejv"]
+shader = ExtResource("1_1om3w")
+shader_parameter/resolution = Vector2(320, 180)
+shader_parameter/scan_line_amount = 1.0
+shader_parameter/warp_amount = 0.1
+shader_parameter/noise_amount = 0.056
+shader_parameter/interference_amount = 0.314
+shader_parameter/grille_amount = 0.0
+shader_parameter/grille_size = 2.257
+shader_parameter/vignette_amount = 0.628
+shader_parameter/vignette_intensity = 0.545
+shader_parameter/aberation_amount = 0.135
+shader_parameter/roll_line_amount = 0.257
+shader_parameter/roll_speed = 1.0
+shader_parameter/scan_line_strength = -8.0
+shader_parameter/pixel_strength = -4.0
+
+[node name="shader_crt_screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_5lejv")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

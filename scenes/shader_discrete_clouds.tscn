@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://bp25l8a8lenol"]
+
+[ext_resource type="Shader" path="res://shaders/discrete_clouds.gdshader" id="1_t2s55"]
+[ext_resource type="Texture2D" uid="uid://cmd034x042foq" path="res://assets/Art/bubbles.png" id="2_c84b7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v7ejx"]
+shader = ExtResource("1_t2s55")
+shader_parameter/bottom_color = Color(0.8, 0.0666667, 0.662745, 1)
+shader_parameter/top_color = Color(0.337255, 0.054902, 0.427451, 1)
+shader_parameter/layer_count = 9
+shader_parameter/time_scale = 0.14
+shader_parameter/base_intensity = 0.426
+shader_parameter/size = 1.0
+shader_parameter/tex = ExtResource("2_c84b7")
+
+[node name="shader_discrete_clouds" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_v7ejx")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

@@ -1,4 +1,6 @@
 extends Control
+@export var main_menu_button: TextureButton
+
 @onready var bgm: AudioStreamPlayer = $bgm
 @onready var congrats: AudioStreamPlayer = $congrats
 
@@ -14,11 +16,11 @@ extends Control
 
 @onready var roulette_sound: AudioStreamPlayer = $roulette_sound
 
-@export var is_spin: bool = false  # Determines if the spinner is active
-@export var speed: int = 10       # Spin speed
-@export var power: int = 2        # Spin power multiplier
-@export var reward_position = 0   # The position where the spinner stops
-signal sig_reward                 # Signal emitted when a reward is determined
+@export var is_spin: bool = false # Determines if the spinner is active
+@export var speed: int = 10 # Spin speed
+@export var power: int = 2 # Spin power multiplier
+@export var reward_position = 0 # The position where the spinner stops
+signal sig_reward # Signal emitted when a reward is determined
 
 var vat_pham = [
 	{
@@ -48,7 +50,7 @@ var vat_pham = [
 		"to": 180,
 		"item_code": 1,
 		"item_name": "win1"
-	}, 
+	},
 	{
 		"name": "Purple",
 		"from": 180,
@@ -85,6 +87,8 @@ func _ready():
 	reset_scene()
 	bgm.play()
 
+	main_menu_button.connect("pressed", Callable(self, "_on_btn_main_menu_pressed"))
+
 # Function to reset the scene state
 func reset_scene():
 	is_spin = false
@@ -102,13 +106,13 @@ func reset_scene():
 # Spin the wheel when the spin button is pressed
 func _on_btn_spin_pressed():
 	roulette_sound.play()
-	if not is_spin:  # Check if the spinner is not already spinning
-		is_spin = true  # Set spinner state to active
+	if not is_spin: # Check if the spinner is not already spinning
+		is_spin = true # Set spinner state to active
 		var tween = get_tree().create_tween().set_parallel(true)
 		tween.connect("finished", func():
 			# Called when the animation finishes
 			var current_rotation = %front.rotation_degrees
-			is_spin = false  # Allow user to spin again
+			is_spin = false # Allow user to spin again
 			
 			if current_rotation > 360:
 				%front.rotation_degrees = fmod(current_rotation, 360)
@@ -117,8 +121,8 @@ func _on_btn_spin_pressed():
 			var item_code = -1
 			for item in vat_pham:
 				if reward_position >= item.from - 22.5 and reward_position <= item.to - 22.5:
-					print(item.name)  # Display the item's name
-					item_code = item.item_code  # Set the item code
+					print(item.name) # Display the item's name
+					item_code = item.item_code # Set the item code
 					break
 
 			# Call the function to display the prize
@@ -126,7 +130,7 @@ func _on_btn_spin_pressed():
 				winning_prize(item_code)
 		)
 		
-		reward_position = randi_range(0, 360)  # Randomize the reward position
+		reward_position = randi_range(0, 360) # Randomize the reward position
 		
 		# Animate the spinner to the reward position
 		tween.tween_property(
@@ -161,7 +165,7 @@ func winning_prize(item_code):
 			win_4_pic.visible = true
 			win_lbl.text = "AWS BALLPEN!!"
 		_:
-			win_lbl.text = "No prize!"  # Fallback for any unexpected item_code
+			win_lbl.text = "No prize!" # Fallback for any unexpected item_code
 	congrats_lbl.visible = true
 	btn_restart.visible = true
 	congrats.play()
@@ -169,4 +173,7 @@ func winning_prize(item_code):
 # Restart button function
 func _on_btn_restart_pressed() -> void:
 	print("Restart button pressed")
-	get_tree().quit()
+	get_tree().change_scene_to_file("res://scenes/title_screen.tscn")
+
+func _on_btn_main_menu_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/title_screen.tscn")

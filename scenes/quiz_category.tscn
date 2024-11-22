@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bvoptddoujjq8"]
+[gd_scene load_steps=10 format=3 uid="uid://dl07tacpmi65f"]
 
 [ext_resource type="Shader" path="res://shaders/discrete_clouds.gdshader" id="1_72hx1"]
 [ext_resource type="Texture2D" uid="uid://ddhnrrs3vu7wc" path="res://assets/Art/UI/buttons/btn_trivia_normal.png" id="1_qm0ou"]

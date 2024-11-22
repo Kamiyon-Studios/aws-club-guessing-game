@@ -1,23 +1,48 @@
-[gd_scene load_steps=25 format=3 uid="uid://dx31idrldi5f1"]
+[gd_scene load_steps=27 format=3 uid="uid://dx31idrldi5f1"]
 
 [ext_resource type="Script" path="res://scripts/quiz_ui.gd" id="1_0pgoq"]
-[ext_resource type="Texture2D" uid="uid://cvhglivqbi4js" path="res://assets/Art/UI/Sprites/UI_Flat_InputField01a.png" id="2_vu1cf"]
 [ext_resource type="FontFile" uid="uid://b23cf0m3da5mv" path="res://assets/Fonts/mini_pixel-7.ttf" id="3_ikbne"]
-[ext_resource type="Texture2D" uid="uid://b7mjybhyppvx7" path="res://assets/Art/UI/Sprites/UI_Flat_Bar01a.png" id="4_7u4mo"]
-[ext_resource type="Texture2D" uid="uid://cm1u4l1wf8pj4" path="res://assets/Art/UI/Sprites/UI_Flat_Button01a_2.png" id="5_0e54d"]
-[ext_resource type="Texture2D" uid="uid://bvuau8swtj3mr" path="res://assets/Art/UI/Sprites/UI_Flat_Button01a_1.png" id="6_h2bjb"]
-[ext_resource type="Texture2D" uid="uid://0tk2nbeh1ptn" path="res://assets/Art/UI/Sprites/UI_Flat_Button01a_3.png" id="7_u25o8"]
+[ext_resource type="Texture2D" uid="uid://ds3jfcv66ift" path="res://assets/Art/UI/buttons/btn_texture_normal.png" id="4_1f6kt"]
+[ext_resource type="Texture2D" uid="uid://bpt6c2kcn1ske" path="res://assets/Art/UI/buttons/btn_texture_pressed.png" id="5_lqir4"]
+[ext_resource type="Texture2D" uid="uid://brddidggbrkfl" path="res://assets/Art/UI/buttons/btn_texture_hover.png" id="6_ctgk4"]
+[ext_resource type="Theme" uid="uid://br87o6rh4kiea" path="res://text_choices.tres" id="7_sll6q"]
+[ext_resource type="Shader" path="res://shaders/progress_bar.gdshader" id="8_ikjwf"]
 [ext_resource type="Script" path="res://scripts/quiz_timer_bar.gd" id="8_ojf2s"]
 [ext_resource type="Texture2D" uid="uid://b3w1ehwtxdaeq" path="res://assets/Art/rectangle.png" id="9_g2j3w"]
 [ext_resource type="Texture2D" uid="uid://d2axtrtdyhcty" path="res://assets/Art/mascot_happy.png" id="10_yjgso"]
 [ext_resource type="PackedScene" uid="uid://bbii34ludbsfp" path="res://scenes/feed_back_animations.tscn" id="11_riv4w"]
-[ext_resource type="Texture2D" uid="uid://cg4u1nlc816mn" path="res://assets/Art/mascot_shocked.png" id="12_s5bqr"]
 [ext_resource type="Texture2D" uid="uid://cuxg1vidyllcv" path="res://assets/Art/mascot_surprised.png" id="13_veeeo"]
 [ext_resource type="Texture2D" uid="uid://dhi0evyg1fqx0" path="res://assets/Art/mascot_crying.png" id="14_uqa6q"]
 [ext_resource type="Texture2D" uid="uid://7rfjgy860ofm" path="res://assets/Art/mascot_sad.png" id="15_irl37"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ucxv"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="Gradient" id="Gradient_hjwmy"]
+offsets = PackedFloat32Array(0.252525, 0.575758, 1)
+colors = PackedColorArray(0.767025, 2.52686e-06, 9.62615e-07, 1, 0.756863, 0.584314, 0.0941176, 1, 0.258824, 0.0431373, 0.341176, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7wlni"]
+gradient = SubResource("Gradient_hjwmy")
+fill_from = Vector2(0, 0.00340136)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e11y6"]
+shader = ExtResource("8_ikjwf")
+shader_parameter/progress = 1.0
+shader_parameter/background_color = Color(0.5, 0.5, 0.5, 1)
+shader_parameter/wave_amplitude = 0.023
+shader_parameter/wave_frequency = 3.6
+shader_parameter/wave_speed = 2.165
+shader_parameter/particle_speed = 0.05
+shader_parameter/particle_lifetime = 3.0
+shader_parameter/particle_softness = 0.01
+shader_parameter/particle_spacing = 0.1
+shader_parameter/particle_offset = Vector2(0, 0)
+shader_parameter/particle_start_scale = Vector2(0.02, 0.02)
+shader_parameter/particle_end_scale = Vector2(0.01, 0.01)
+shader_parameter/particle_scale_randomness = 0.335
+shader_parameter/particle_amount = 20
+shader_parameter/color_gradient = SubResource("GradientTexture2D_7wlni")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5mjys"]
 
@@ -27,18 +52,6 @@ bg_color = Color(1, 0, 0, 1)
 [sub_resource type="Animation" id="Animation_6626h"]
 resource_name = "Correct_Feedback1"
 length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Rectangle/AwsMascot:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("12_s5bqr")]
-}
 
 [sub_resource type="Animation" id="Animation_qkyre"]
 resource_name = "Correct_Feedback2"
@@ -142,13 +155,15 @@ grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_3ucxv")
 
 [node name="TextureRect" type="TextureRect" parent="Panel"]
+texture_filter = 2
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_vu1cf")
+texture = ExtResource("9_g2j3w")
+expand_mode = 1
 
 [node name="QuestionLabel" type="Label" parent="Panel"]
 layout_mode = 1
@@ -173,22 +188,30 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -45.0
-offset_top = -60.0
+offset_top = -59.0
 offset_right = 45.0
-offset_bottom = -5.0
+offset_bottom = -4.0
 grow_horizontal = 2
-texture = ExtResource("4_7u4mo")
+texture = ExtResource("9_g2j3w")
+expand_mode = 1
 
 [node name="TimerLabel" type="Label" parent="Panel/TimerRect"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -8.0
-offset_bottom = 2.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = -28.0
+offset_right = 10.0
+offset_bottom = 28.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 3
 theme_override_fonts/font = ExtResource("3_ikbne")
 theme_override_font_sizes/font_size = 56
 text = "0"
@@ -199,18 +222,22 @@ vertical_alignment = 1
 z_index = -1
 layout_mode = 1
 offset_left = 40.0
-offset_top = -42.0
+offset_top = -50.0
 offset_right = 220.0
-offset_bottom = -2.0
-texture = ExtResource("4_7u4mo")
+offset_bottom = -10.0
+texture = ExtResource("4_1f6kt")
+expand_mode = 1
 
 [node name="QuestionNumberLabel" type="Label" parent="Panel/QuestionNumber"]
 layout_mode = 1
 offset_top = -3.0
 offset_right = 180.0
 offset_bottom = 37.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/line_spacing = 100
+theme_override_constants/shadow_offset_y = 2
 theme_override_fonts/font = ExtResource("3_ikbne")
 theme_override_font_sizes/font_size = 32
 text = "Question 1 / 1"
@@ -220,10 +247,11 @@ vertical_alignment = 1
 [node name="ScoreRect" type="TextureRect" parent="Panel"]
 layout_mode = 0
 offset_left = 680.0
-offset_top = -42.0
+offset_top = -50.0
 offset_right = 800.0
-offset_bottom = -2.0
-texture = ExtResource("4_7u4mo")
+offset_bottom = -10.0
+texture = ExtResource("9_g2j3w")
+expand_mode = 2
 
 [node name="ScoreLabel" type="Label" parent="Panel/ScoreRect"]
 layout_mode = 1
@@ -234,7 +262,10 @@ offset_top = -3.0
 offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 2
 theme_override_fonts/font = ExtResource("3_ikbne")
 theme_override_font_sizes/font_size = 32
 text = "Score: 0"
@@ -248,15 +279,17 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -90.0
-offset_top = -5.0
-offset_right = 90.0
-offset_bottom = 38.0
+offset_left = -121.0
+offset_top = -24.0
+offset_right = 59.0
+offset_bottom = 19.0
 grow_horizontal = 2
 grow_vertical = 0
-texture_normal = ExtResource("5_0e54d")
-texture_pressed = ExtResource("6_h2bjb")
-texture_hover = ExtResource("7_u25o8")
+scale = Vector2(1.08, 1.08)
+texture_normal = ExtResource("4_1f6kt")
+texture_pressed = ExtResource("5_lqir4")
+texture_hover = ExtResource("6_ctgk4")
+ignore_texture_size = true
 stretch_mode = 0
 
 [node name="NextQuestionButtonLabel" type="Label" parent="Panel/NextQuestionButton2"]
@@ -266,9 +299,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_ikbne")
-theme_override_font_sizes/font_size = 36
+theme = ExtResource("7_sll6q")
+theme_override_font_sizes/font_size = 30
 text = "Next"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -298,9 +330,10 @@ columns = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture_normal = ExtResource("5_0e54d")
-texture_pressed = ExtResource("6_h2bjb")
-texture_hover = ExtResource("7_u25o8")
+texture_normal = ExtResource("4_1f6kt")
+texture_pressed = ExtResource("5_lqir4")
+texture_hover = ExtResource("6_ctgk4")
+ignore_texture_size = true
 stretch_mode = 0
 
 [node name="ChoiceLabel1" type="Label" parent="ChoicesButton/GridContainer/TextureButton1"]
@@ -316,9 +349,7 @@ offset_right = 0.5
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_ikbne")
-theme_override_font_sizes/font_size = 34
+theme = ExtResource("7_sll6q")
 text = "Button 1"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -327,9 +358,10 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture_normal = ExtResource("5_0e54d")
-texture_pressed = ExtResource("6_h2bjb")
-texture_hover = ExtResource("7_u25o8")
+texture_normal = ExtResource("4_1f6kt")
+texture_pressed = ExtResource("5_lqir4")
+texture_hover = ExtResource("6_ctgk4")
+ignore_texture_size = true
 stretch_mode = 0
 
 [node name="ChoiceLabel2" type="Label" parent="ChoicesButton/GridContainer/TextureButton2"]
@@ -345,9 +377,7 @@ offset_right = 20.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_ikbne")
-theme_override_font_sizes/font_size = 34
+theme = ExtResource("7_sll6q")
 text = "Button 2"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -356,9 +386,10 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture_normal = ExtResource("5_0e54d")
-texture_pressed = ExtResource("6_h2bjb")
-texture_hover = ExtResource("7_u25o8")
+texture_normal = ExtResource("4_1f6kt")
+texture_pressed = ExtResource("5_lqir4")
+texture_hover = ExtResource("6_ctgk4")
+ignore_texture_size = true
 stretch_mode = 0
 
 [node name="ChoiceLabel3" type="Label" parent="ChoicesButton/GridContainer/TextureButton3"]
@@ -374,9 +405,7 @@ offset_right = 20.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_ikbne")
-theme_override_font_sizes/font_size = 34
+theme = ExtResource("7_sll6q")
 text = "Button 3"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -385,9 +414,10 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture_normal = ExtResource("5_0e54d")
-texture_pressed = ExtResource("6_h2bjb")
-texture_hover = ExtResource("7_u25o8")
+texture_normal = ExtResource("4_1f6kt")
+texture_pressed = ExtResource("5_lqir4")
+texture_hover = ExtResource("6_ctgk4")
+ignore_texture_size = true
 stretch_mode = 0
 
 [node name="ChoiceLabel4" type="Label" parent="ChoicesButton/GridContainer/TextureButton4"]
@@ -403,9 +433,7 @@ offset_right = 20.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_ikbne")
-theme_override_font_sizes/font_size = 34
+theme = ExtResource("7_sll6q")
 text = "Button 4"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -413,6 +441,7 @@ vertical_alignment = 1
 [node name="Timer" type="Timer" parent="."]
 
 [node name="TimerBar" type="ProgressBar" parent="."]
+material = SubResource("ShaderMaterial_e11y6")
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -425,7 +454,7 @@ show_percentage = false
 script = ExtResource("8_ojf2s")
 
 [node name="Rectangle" type="Sprite2D" parent="."]
-position = Vector2(782, 386)
+position = Vector2(782, 402)
 scale = Vector2(0.424108, 0.42301)
 texture = ExtResource("9_g2j3w")
 

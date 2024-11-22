@@ -1,39 +1,146 @@
 [
-	{
-		"question": "Test",
-		"choices": ["Test", "Test", "Test", "Test"],
-		"answer": 0,
-		"time": 10
-	},
-	{
-		"question": "What was AWS originally designed for?",
-		"choices": ["Scale e-commerce", "Free software", "Host website", "Replace software"],
-		"answer": 0,
-		"time": 10
-	},
-	{
-		"question": "What was the codename for AWS during its early development?",
-		"choices": ["Lisbon", "Obidos", "Porto", "Algarve"],
-		"answer": 1,
-		"time": 10
-	},
-	{
-		"question": "Which major streaming service heavily relies on AWS?",
-		"choices": ["Hulu", "Disney+", "HBO Max", "Netflix"],
-		"answer": 3,
-		"time": 10
-	},
-	{
-		"question": "Who contracted AWS for a private cloud in 2013?",
-		"choices": ["CIA", "FBI", "NASA", "NSA"],
-		"answer": 0,
-		"time": 10
-	},
-	{
-		"question": "Test",
-		"choices": ["Test", "Test", "Test", "Test"],
-		"answer": 0,
-		"time": 10
-	},
-	
-]
+  {
+	"question": "Which AWS service allows you to rent virtual machines in the cloud?",
+	"choices": ["EC2", "Lambda", "S3", "RDS"],
+	"answer": 0,
+	"time": 10
+  },
+  {
+	"question": "What AWS service lets you store files for backup or hosting websites?",
+	"choices": ["Amazon EFS", "Amazon S3", "Amazon Glacier", "Amazon RDS"],
+	"answer": 1,
+	"time": 10
+  },
+  {
+	"question": "Which AWS tool is primarily used to manage user access and permissions?",
+	"choices": ["IAM", "VPC", "CloudTrail", "Security Hub"],
+	"answer": 0,
+	"time": 10
+  },
+  {
+	"question": "In AWS, what does an 'Availability Zone' refer to?",
+	"choices": ["A pricing plan", "A single data center", "A geographic region", "A redundant data center cluster"],
+	"answer": 1,
+	"time": 10
+  },
+  {
+	"question": "Which programming language is NOT officially supported for AWS Lambda?",
+	"choices": ["Python", "JavaScript", "Ruby", "C++"],
+	"answer": 3,
+	"time": 10
+  },
+  {
+	"question": "Which service is used to distribute incoming traffic across multiple instances?",
+	"choices": ["CloudFront", "Auto Scaling", "Load Balancer", "Route 53"],
+	"answer": 2,
+	"time": 10
+  },
+  {
+	"question": "What is the AWS service to monitor security threats in real time?",
+	"choices": ["GuardDuty", "CloudTrail", "WAF", "AWS Inspector"],
+	"answer": 0,
+	"time": 10
+  },
+  {
+	"question": "Which AWS service allows secure file transfers into S3?",
+	"choices": ["S3 Replication", "S3 Transfer Acceleration", "Direct Connect", "DataSync"],
+	"answer": 1,
+	"time": 10
+  },
+  {
+	"question": "Which AWS service is commonly used to host websites or web apps?",
+	"choices": ["Elastic Beanstalk", "DynamoDB", "Lambda", "AppStream"],
+	"answer": 0,
+	"time": 10
+  },
+  {
+	"question": "Which AWS database service would you use for a real-time gaming leaderboard?",
+	"choices": ["DynamoDB", "RDS", "Redshift", "Neptune"],
+	"answer": 0,
+	"time": 10
+  },
+  {
+	"question": "What service automates the deployment of containerized applications?",
+	"choices": ["ECS", "Lambda", "API Gateway", "CloudFormation"],
+	"answer": 0,
+	"time": 10
+  },
+  {
+	"question": "Which service lets you create and manage REST APIs?",
+	"choices": ["API Gateway", "App Runner", "Route 53", "CloudFront"],
+	"answer": 0,
+	"time": 10
+  },
+  {
+	"question": "Which AWS tool simplifies infrastructure management using code?",
+	"choices": ["CodePipeline", "CloudFormation", "Elastic Beanstalk", "OpsWorks"],
+	"answer": 1,
+	"time": 10
+  },
+  {
+	"question": "Which AWS service supports version control for collaborative coding?",
+	"choices": ["CodePipeline", "CodeDeploy", "CodeCommit", "Cloud9"],
+	"answer": 2,
+	"time": 10
+  },
+  {
+	"question": "What AWS service is used to automatically deploy updated code to servers?",
+	"choices": ["CodeBuild", "CodeDeploy", "Elastic Beanstalk", "ECS"],
+	"answer": 1,
+	"time": 10
+  },
+  {
+	"question": "What is AWS’s browser-based IDE for programming?",
+	"choices": ["AWS IDE", "AWS CodeCommit", "AWS Cloud9", "AWS WorkSpaces"],
+	"answer": 2,
+	"time": 10
+  },
+  {
+	"question": "What AWS service monitors application logs and metrics?",
+	"choices": ["CloudWatch", "CloudTrail", "Config", "GuardDuty"],
+	"answer": 0,
+	"time": 10
+  },
+  {
+	"question": "Which AWS service would you use to analyze streaming data in real time?",
+	"choices": ["Kinesis", "Redshift", "EMR", "Data Pipeline"],
+	"answer": 0,
+	"time": 10
+  },
+  {
+	"question": "What AWS tool lets you preprocess large datasets with Spark or Hadoop?",
+	"choices": ["Glue", "EMR", "Data Pipeline", "SageMaker"],
+	"answer": 1,
+	"time": 10
+  },
+  {
+	"question": "Which service is best for image recognition tasks?",
+	"choices": ["Rekognition", "Comprehend", "Polly", "SageMaker"],
+	"answer": 0,
+	"time": 10
+  },
+  {
+	"question": "What AWS service helps build, train, and deploy machine learning models?",
+	"choices": ["Rekognition", "Comprehend", "SageMaker", "Lex"],
+	"answer": 2,
+	"time": 10
+  },
+  {
+	"question": "Which AWS service would you use to estimate infrastructure costs?",
+	"choices": ["AWS Budgets", "Pricing Calculator", "Cost Explorer", "CloudFormation"],
+	"answer": 1,
+	"time": 10
+  },
+  {
+	"question": "How can you prevent accidental deletion of S3 data?",
+	"choices": ["Enable encryption", "Enable versioning", "Use lifecycle policies", "Use Access Analyzer"],
+	"answer": 1,
+	"time": 10
+  },
+  {
+	"question": "What AWS service helps optimize performance by suggesting scaling solutions?",
+	"choices": ["Auto Scaling", "Trusted Advisor", "CloudTrail", "Inspector"],
+	"answer": 1,
+	"time": 10
+  },
+  ]

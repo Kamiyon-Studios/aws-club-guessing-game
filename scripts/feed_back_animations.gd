@@ -1,5 +1,9 @@
 extends Control
 
+@onready var sfx_wrong_answer: AudioStreamPlayer = $SFX_wrong_answer
+@onready var sfx_correct_answer: AudioStreamPlayer = $SFX_correct_answer
+
+
 # Animations
 @export_category("Animations")
 @export var feedback_animation_player: AnimationPlayer
@@ -55,6 +59,7 @@ func _on_correct_answer() -> void:
 	# Play the correct feedback animation
 	feedback_animation_player.play("Correct_Feedback")
 	_play_random_mascot_sfx(correct_mascot_sfx)
+	sfx_correct_answer.play()
 
 func _on_incorrect_answer() -> void:
 	show()
@@ -65,6 +70,7 @@ func _on_incorrect_answer() -> void:
 	# Play the incorrect feedback animation
 	feedback_animation_player.play("Incorrect_Feedback")
 	_play_random_mascot_sfx(incorrect_mascot_sfx)
+	sfx_wrong_answer.play()
 
 func _on_timeout() -> void:
 	show()
@@ -74,6 +80,7 @@ func _on_timeout() -> void:
 	mascot_animation_player.play(random_incorrect_anim)
 	feedback_animation_player.play("Timeout_Feedback")
 	_play_random_mascot_sfx(incorrect_mascot_sfx)
+	sfx_wrong_answer.play()
 
 func _on_animation_finished(_anim_name: StringName) -> void:
 	# Hide the animation

@@ -18,7 +18,12 @@ func _process(delta):
 		if timer_value > 0:
 			elapsed_time += delta
 			var remaining_time = max(0, timer_value - elapsed_time)
-			self.value = (remaining_time / timer_value) * 100
+			#self.value = (remaining_time / timer_value) * 100
+
+			# Update the shader parameter
+			var shader_material := self.material
+			if shader_material and shader_material is ShaderMaterial:
+				shader_material.set_shader_parameter("progress", remaining_time / timer_value)
 
 			# Stop updating if time runs out
 			if remaining_time <= 0:
@@ -30,6 +35,11 @@ func _update_progress_bar():
 	timer_value = quiz_ui_script.timer_value
 	elapsed_time = 0.0
 	self.value = 100 # Reset the progress bar to full
+
+	# Reset shader parameter
+	var shader_material := self.material
+	if shader_material and shader_material is ShaderMaterial:
+		shader_material.set_shader_parameter("progress", 1.0)
 
 func _stop_progress_bar():
 	is_countdown = false

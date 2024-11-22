@@ -93,9 +93,9 @@ func _show_question(index: int) -> void:
 
 		# Update label text
 		label.text = choices[i]
-
-	on_question_show.emit()
+	
 	timer.start()
+	on_question_show.emit()
 
 # Called when an answer button is pressed
 func _on_choice_pressed(choice_index: int) -> void:
@@ -124,6 +124,7 @@ func _show_next_question() -> void:
 	if current_question_index + 1 < max_question and current_question_index + 1 < question.size():
 		current_question_index += 1
 		next_question_button.hide()
+		timer_label.label_settings.font_color = Color(1, 1, 1)
 		_show_question(current_question_index)
 	else:
 		on_quiz_finish.emit()
@@ -136,6 +137,13 @@ func _update_timer_display() -> void:
 func _on_timer_timeout() -> void:
 	timer_value -= 1
 	_update_timer_display()
+
+	if timer_value <= 3:
+		# Set font color to red for timer_label by modifying its theme
+		timer_label.label_settings.font_color = Color(1, 0, 0)
+	else:
+		# Set font color to white for timer_label by modifying its theme
+		timer_label.label_settings.font_color = Color(1, 1, 1)
 
 	if timer_value <= 0:
 		on_timeout.emit()
@@ -150,19 +158,18 @@ func _show_feedback(is_correct: bool, choice_index: int) -> void:
 
 	# Update selected button's appearance and correct answer
 	var selected_button = button_group[choice_index]
-	var selected_label = button_labels[choice_index]
 	selected_button.modulate = Color(0, 1, 0) if is_correct else Color(1, 0, 0)
-	selected_label.modulate = Color(0, 1, 0) if is_correct else Color(1, 0, 0)
+	selected_button.get_child(0).modulate = Color(1, 1, 1)
 
 	var correct_button = button_group[correct_answer_index]
-	var correct_label = button_labels[correct_answer_index]
 	correct_button.modulate = Color(0, 1, 0)
-	correct_label.modulate = Color(0, 1, 0)
+	correct_button.get_child(0).modulate = Color(1, 1, 1)
+
+	# correct_label.modulate = Color(0, 1, 0)
 
 # Called when the quiz is finished
 func _on_quiz_finish() -> void:
 	hide()
-	print("Game over! Final score: ", score)
 
 # Disable all answer buttons
 func _disable_buttons() -> void:

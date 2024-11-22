@@ -1,9 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://cmvppk5w0uho"]
+[gd_scene load_steps=7 format=3 uid="uid://cmvppk5w0uho"]
 
 [ext_resource type="Script" path="res://scripts/game_start_countdown.gd" id="1_dxbet"]
 [ext_resource type="FontFile" uid="uid://b23cf0m3da5mv" path="res://assets/Fonts/mini_pixel-7.ttf" id="1_kmrvc"]
-[ext_resource type="AudioStream" uid="uid://cdpgdutuiilrl" path="res://assets/Sounds/countdown_1.mp3" id="3_mg3ko"]
-[ext_resource type="AudioStream" uid="uid://br6ufk1w2xj3u" path="res://assets/Sounds/countdown_2.mp3" id="4_q2ofo"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_o8voj"]
 font = ExtResource("1_kmrvc")
@@ -139,7 +137,7 @@ tracks/9/keys = {
 
 [sub_resource type="Animation" id="Animation_7id5d"]
 resource_name = "Start_Countdown"
-length = 4.0
+length = 3.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -195,7 +193,7 @@ tracks/4/path = NodePath("Control/Label:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(1.4, 1.66667, 1.7, 1.9, 2.26667, 2.56667, 2.8, 3.2, 3.8),
+"times": PackedFloat32Array(1.4, 1.66667, 1.7, 1.9, 2.26667, 2.56667, 2.8, 3.2, 3.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
@@ -323,7 +321,5 @@ libraries = {
 }
 
 [node name="countdown_1" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_mg3ko")
 
 [node name="countdown_2" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_q2ofo")

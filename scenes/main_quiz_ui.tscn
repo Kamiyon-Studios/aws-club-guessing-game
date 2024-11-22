@@ -1,11 +1,11 @@
-[gd_scene load_steps=27 format=3 uid="uid://dx31idrldi5f1"]
+[gd_scene load_steps=30 format=3 uid="uid://dx31idrldi5f1"]
 
 [ext_resource type="Script" path="res://scripts/quiz_ui.gd" id="1_0pgoq"]
 [ext_resource type="FontFile" uid="uid://b23cf0m3da5mv" path="res://assets/Fonts/mini_pixel-7.ttf" id="3_ikbne"]
 [ext_resource type="Texture2D" uid="uid://ds3jfcv66ift" path="res://assets/Art/UI/buttons/btn_texture_normal.png" id="4_1f6kt"]
 [ext_resource type="Texture2D" uid="uid://bpt6c2kcn1ske" path="res://assets/Art/UI/buttons/btn_texture_pressed.png" id="5_lqir4"]
 [ext_resource type="Texture2D" uid="uid://brddidggbrkfl" path="res://assets/Art/UI/buttons/btn_texture_hover.png" id="6_ctgk4"]
-[ext_resource type="Theme" uid="uid://br87o6rh4kiea" path="res://text_choices.tres" id="7_sll6q"]
+[ext_resource type="Theme" path="res://text_choices.tres" id="7_sll6q"]
 [ext_resource type="Shader" path="res://shaders/progress_bar.gdshader" id="8_ikjwf"]
 [ext_resource type="Script" path="res://scripts/quiz_timer_bar.gd" id="8_ojf2s"]
 [ext_resource type="Texture2D" uid="uid://b3w1ehwtxdaeq" path="res://assets/Art/rectangle.png" id="9_g2j3w"]
@@ -18,6 +18,33 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ucxv"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
+[sub_resource type="LabelSettings" id="LabelSettings_q5b36"]
+font = ExtResource("3_ikbne")
+font_size = 56
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(1, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_tt5av"]
+font = ExtResource("3_ikbne")
+font_size = 32
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 3
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(1, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_pd0gu"]
+font = ExtResource("3_ikbne")
+font_size = 32
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 3
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(1, 2)
+
 [sub_resource type="Gradient" id="Gradient_hjwmy"]
 offsets = PackedFloat32Array(0.252525, 0.575758, 1)
 colors = PackedColorArray(0.767025, 2.52686e-06, 9.62615e-07, 1, 0.756863, 0.584314, 0.0941176, 1, 0.258824, 0.0431373, 0.341176, 1)
@@ -29,7 +56,7 @@ fill_from = Vector2(0, 0.00340136)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_e11y6"]
 shader = ExtResource("8_ikjwf")
 shader_parameter/progress = 0.0
-shader_parameter/background_color = Color(0.5, 0.5, 0.5, 1)
+shader_parameter/background_color = Color(0.501961, 0.501961, 0.501961, 1)
 shader_parameter/wave_amplitude = 0.023
 shader_parameter/wave_frequency = 3.6
 shader_parameter/wave_speed = 2.165
@@ -177,7 +204,7 @@ offset_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.99, 0.99)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme = ExtResource("7_sll6q")
 theme_override_fonts/font = ExtResource("3_ikbne")
 theme_override_font_sizes/font_size = 32
 text = "Text Label"
@@ -209,13 +236,10 @@ offset_right = 10.0
 offset_bottom = 28.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(1, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 0
 theme_override_constants/shadow_offset_y = 3
-theme_override_fonts/font = ExtResource("3_ikbne")
-theme_override_font_sizes/font_size = 56
 text = "0"
+label_settings = SubResource("LabelSettings_q5b36")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -234,14 +258,11 @@ layout_mode = 1
 offset_top = -3.0
 offset_right = 180.0
 offset_bottom = 37.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/line_spacing = 100
 theme_override_constants/shadow_offset_y = 2
-theme_override_fonts/font = ExtResource("3_ikbne")
 theme_override_font_sizes/font_size = 32
 text = "Question 1 / 1"
+label_settings = SubResource("LabelSettings_tt5av")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -263,13 +284,9 @@ offset_top = -3.0
 offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_y = 2
-theme_override_fonts/font = ExtResource("3_ikbne")
-theme_override_font_sizes/font_size = 32
 text = "Score: 0"
+label_settings = SubResource("LabelSettings_pd0gu")
 horizontal_alignment = 1
 vertical_alignment = 1
 

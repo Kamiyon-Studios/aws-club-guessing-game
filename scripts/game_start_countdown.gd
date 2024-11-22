@@ -11,6 +11,7 @@ func _ready():
 	countdown_animation_player.connect("animation_finished", Callable(self, "_start_game"))
 
 func _start_countdown():
+	show()
 	countdown_animation_player.play("Start_Countdown")
 
 func _start_game(_anim_name: StringName):

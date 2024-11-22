@@ -5,12 +5,30 @@ extends Control
 @export var feedback_animation_player: AnimationPlayer
 @export var mascot_animation_player: AnimationPlayer
 
+@export_category("SFX")
+@export var mascot_sfx_player: AudioStreamPlayer
+
 # Script
 @export var quiz_ui_script: Node
 
 # Animation arrays
 var correct_mascot_animation: Array[String] = ["Correct_Feedback1", "Correct_Feedback2"]
 var incorrect_mascot_animation: Array[String] = ["Incorrect_Feedback1", "Incorrect_Feedback2"]
+
+# SFX array
+var correct_mascot_sfx: Array[AudioStream] = [
+	preload("res://assets/Sounds/sfx_reaction/sfx_mascot_happy_1.mp3"),
+	preload("res://assets/Sounds/sfx_reaction/sfx_mascot_happy_2.mp3"),
+	preload("res://assets/Sounds/sfx_reaction/sfx_mascot_shocked.mp3"),
+	preload("res://assets/Sounds/sfx_reaction/sfx_mascot_shocked_2.mp3"),
+]
+
+var incorrect_mascot_sfx: Array[AudioStream] = [
+	preload("res://assets/Sounds/sfx_reaction/sfx_mascot_crying_1.mp3"),
+	preload("res://assets/Sounds/sfx_reaction/sfx_mascot_crying_2.mp3"),
+	preload("res://assets/Sounds/sfx_reaction/sfx_mascot_sad_1.mp3"),
+	preload("res://assets/Sounds/sfx_reaction/sfx_mascot_sad_2.mp3"),
+]
 
 func _init() -> void:
 	hide()
@@ -61,3 +79,9 @@ func _on_animation_finished(_anim_name: StringName) -> void:
 func reset_mascot_animation() -> void:
 	# Reset the animation
 	mascot_animation_player.play("RESET")
+
+
+func _play_random_mascot_sfx(sfx_array: Array[AudioStream]) -> void:
+	var random_sfx = correct_mascot_sfx[randi() % sfx_array.size()]
+	mascot_sfx_player.stream = random_sfx
+	mascot_sfx_player.play()

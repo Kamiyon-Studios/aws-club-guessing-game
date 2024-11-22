@@ -434,15 +434,19 @@ position = Vector2(9.43154, -63.8283)
 scale = Vector2(1.06001, 1.06001)
 texture = ExtResource("10_yjgso")
 
-[node name="FeedBackAnimations" parent="." node_paths=PackedStringArray("mascot_animation_player", "quiz_ui_script") instance=ExtResource("11_riv4w")]
+[node name="FeedBackAnimations" parent="." node_paths=PackedStringArray("mascot_animation_player", "mascot_sfx_player", "quiz_ui_script") instance=ExtResource("11_riv4w")]
 visible = false
 layout_mode = 1
 mascot_animation_player = NodePath("../MascotAnimationPlayer")
+mascot_sfx_player = NodePath("../SFX1")
 quiz_ui_script = NodePath("..")
 
 [node name="MascotAnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_qfque")
 }
+
+[node name="SFX1" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
